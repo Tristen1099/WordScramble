@@ -33,6 +33,8 @@
 			<Add option="`fltk-config --ldstaticflags`" />
 		</Linker>
 		<Unit filename="main.cpp" />
+		<Unit filename="view/WordScrambleWindow.cpp" />
+		<Unit filename="view/WordScrambleWindow.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
