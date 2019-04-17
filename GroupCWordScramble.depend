@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1555539783 source:/home/csuser/Desktop/GroupCWordScramble/main.cpp
+	"WordScrambleWindow.h"
+
+1555539849 /home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.h
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+
+1555539849 source:/home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.cpp
+	"WordScrambleWindow.h"
+
