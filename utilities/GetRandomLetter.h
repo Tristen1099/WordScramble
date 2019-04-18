@@ -1,6 +1,9 @@
 #ifndef GETRANDOMLETTER_H
 #define GETRANDOMLETTER_H
 
+#include <vector>
+using namespace std;
+
 namespace utilities
 {
 
@@ -13,6 +16,8 @@ public:
 
 
 private:
+    vector<char> setFrequency;
+    void populateSetFrequency();
 };
 }
 #endif // GETRANDOMLETTER_H

@@ -6,6 +6,9 @@
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Button.H>
 
+#include <vector>
+using namespace std;
+
 namespace view
 {
 
@@ -22,6 +25,7 @@ private:
     int timeRemaining;
     Fl_Button* newGameButton;
     Fl_Box *gameTitle;
+    vector<char> randomLetters;
 };
 
 }
