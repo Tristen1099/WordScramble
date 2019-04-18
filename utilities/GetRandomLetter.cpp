@@ -5,12 +5,28 @@ namespace utilities
 
 GetRandomLetter::GetRandomLetter()
 {
-          this->populateSetFrequency();
+    this->populateSetFrequency();
 }
 
 GetRandomLetter::~GetRandomLetter()
 {
     //dtor
+}
+
+const char GetRandomLetter::getRandomLetter()
+{
+   //NEEDS TO BE FIXED ALWAYS GETS THE SAME LETTERS
+
+    int setSize = this->setFrequency.size();
+
+    int random_integer;
+    int range=setSize+1;
+
+    srand(time(NULL));
+    random_integer = rand()%setSize;
+
+    return this->setFrequency[random_integer];
+
 }
 
 

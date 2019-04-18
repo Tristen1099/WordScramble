@@ -17,6 +17,12 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 
     Fl_Box* test = new Fl_Box(FL_RSHADOW_BOX, 200,300, 40,40,"T");
 
+GetRandomLetter *randomLet = new GetRandomLetter();
+    for(int i = 0; i < 6; i++)
+    {
+
+        cout << randomLet->getRandomLetter() << endl;
+    }
 
 
     this->timeRemaining = 0;

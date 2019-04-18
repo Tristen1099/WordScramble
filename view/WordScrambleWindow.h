@@ -7,7 +7,11 @@
 #include <FL/Fl_Button.H>
 
 #include <vector>
+#include <iostream>
 using namespace std;
+
+#include "GetRandomLetter.h"
+using namespace utilities;
 
 namespace view
 {
@@ -19,6 +23,7 @@ public:
     WordScrambleWindow(int width, int height, const char* title);
     virtual ~WordScrambleWindow();
     static void cbStartNewGame(Fl_Widget* widget, void* data);
+
 
 
 private:

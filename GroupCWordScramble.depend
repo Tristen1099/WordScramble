@@ -2,21 +2,27 @@
 1555549582 source:/home/csuser/Desktop/GroupCWordScramble/main.cpp
 	"view/WordScrambleWindow.h"
 
-1555555844 /home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.h
+1555559244 /home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
 	<FL/Fl_Button.H>
 	<vector>
+	<iostream>
+	"GetRandomLetter.h"
 
-1555557840 source:/home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.cpp
+1555560395 source:/home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
 1555539783 source:/home/csuser/Downloads/GroupCWordScramble.4/main.cpp
 	"WordScrambleWindow.h"
 
-1555549582 source:/home/csuser/Desktop/GroupCWordScramble/utilities/GetRandomLetter.cpp
+1555560879 source:/home/csuser/Desktop/GroupCWordScramble/utilities/GetRandomLetter.cpp
 	"GetRandomLetter.h"
 
-1555549582 /home/csuser/Desktop/GroupCWordScramble/utilities/GetRandomLetter.h
+1555560598 /home/csuser/Desktop/GroupCWordScramble/utilities/GetRandomLetter.h
+	<vector>
+	<cstdlib>
+	<ctime>
+	<iostream>
 
