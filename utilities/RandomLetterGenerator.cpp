@@ -1,16 +1,21 @@
 #include "RandomLetterGenerator.h"
 
 
-char* RandomLetterGenerator::makeRandomUniqueLetterArray(int charCount)
+char* RandomLetterGenerator::makeRandomUniqueLetterArray(size_t charCount)
 {
-    const int ALPHABET_SIZE = 26;
+    vector<char> potentials = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+    if (charCount > potentials.size())
+    {
+        throw out_of_range("Cannot produce unique letter array larger than the size of the alphabet");
+    }
+
     char* output = new char[charCount]();
-    char potentials[ALPHABET_SIZE] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
     for (int i = 0; i < charCount; i++)
     {
-        int randomIndex = rand() % ALPHABET_SIZE;
+        size_t randomIndex = rand() % potentials.size();
         output[i] = potentials[randomIndex];
+        potentials.erase(potentials.begin() + randomIndex);
     }
     return output;
 }

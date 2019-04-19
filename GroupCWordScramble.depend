@@ -26,7 +26,7 @@
 	<ctime>
 	<iostream>
 
-1555644089 source:/home/csuser/GroupCWordScramble/main.cpp
+1555646205 source:/home/csuser/GroupCWordScramble/main.cpp
 	"view/WordScrambleWindow.h"
 
 1555645659 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
@@ -45,15 +45,17 @@
 	<ctime>
 	<iostream>
 
-1555645738 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
+1555703153 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
 1555641991 source:/home/csuser/GroupCWordScramble/utilities/GetRandomLetter.cpp
 	"GetRandomLetter.h"
 
-1555644853 /home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.h
+1555703449 /home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.h
+	<vector>
 	<cstdlib>
+	<stdexcept>
 
-1555644881 source:/home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.cpp
+1555703109 source:/home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.cpp
 	"RandomLetterGenerator.h"
 

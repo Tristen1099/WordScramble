@@ -18,8 +18,8 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 
     Fl_Box* test = new Fl_Box(FL_RSHADOW_BOX, 200,300, 40,40,"T");
 
-    char* randomLetterArray = RandomLetterGenerator::makeRandomUniqueLetterArray(6);
-    for(int i = 0; i < 6; i++)
+    char* randomLetterArray = RandomLetterGenerator::makeRandomUniqueLetterArray(20);
+    for(int i = 0; i < 20; i++)
     {
 
         //cout << randomLet->getRandomLetter() << endl;
