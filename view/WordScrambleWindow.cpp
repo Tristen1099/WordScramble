@@ -5,6 +5,7 @@ namespace view
 
 WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
+    begin();
     this->newGameButton = new Fl_Button(1000, 700, 90, 30, "New Game");
     this->newGameButton->callback(cbStartNewGame, this);
     this->gameTitle = new Fl_Box(242,8, 50,50,"~The Word Scrambler~");
@@ -17,15 +18,18 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 
     Fl_Box* test = new Fl_Box(FL_RSHADOW_BOX, 200,300, 40,40,"T");
 
-GetRandomLetter *randomLet = new GetRandomLetter();
+    char* randomLetterArray = RandomLetterGenerator::makeRandomUniqueLetterArray(6);
     for(int i = 0; i < 6; i++)
     {
 
-        cout << randomLet->getRandomLetter() << endl;
+        //cout << randomLet->getRandomLetter() << endl;
+        cout << randomLetterArray[i] << endl;
     }
 
 
     this->timeRemaining = 0;
+
+    end();
 }
 
 void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)

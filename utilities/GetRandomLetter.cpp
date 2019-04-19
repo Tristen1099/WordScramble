@@ -22,7 +22,7 @@ const char GetRandomLetter::getRandomLetter()
     int random_integer;
     int range=setSize+1;
 
-    srand(time(NULL));
+    //srand(time(NULL));
     random_integer = rand()%setSize;
 
     return this->setFrequency[random_integer];

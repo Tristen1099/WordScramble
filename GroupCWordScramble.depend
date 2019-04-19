@@ -26,3 +26,34 @@
 	<ctime>
 	<iostream>
 
+1555644089 source:/home/csuser/GroupCWordScramble/main.cpp
+	"view/WordScrambleWindow.h"
+
+1555645659 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Button.H>
+	<vector>
+	<iostream>
+	"../utilities/GetRandomLetter.h"
+	"../utilities/RandomLetterGenerator.h"
+
+1555641623 /home/csuser/GroupCWordScramble/utilities/GetRandomLetter.h
+	<vector>
+	<cstdlib>
+	<ctime>
+	<iostream>
+
+1555645738 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
+	"WordScrambleWindow.h"
+
+1555641991 source:/home/csuser/GroupCWordScramble/utilities/GetRandomLetter.cpp
+	"GetRandomLetter.h"
+
+1555644853 /home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.h
+	<cstdlib>
+
+1555644881 source:/home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.cpp
+	"RandomLetterGenerator.h"
+
