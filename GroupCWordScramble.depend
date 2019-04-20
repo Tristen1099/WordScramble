@@ -26,10 +26,13 @@
 	<ctime>
 	<iostream>
 
-1555646205 source:/home/csuser/GroupCWordScramble/main.cpp
+1555790925 source:/home/csuser/GroupCWordScramble/main.cpp
 	"view/WordScrambleWindow.h"
+	"DictionaryFileReader.h"
+	"../utilities/RandomLetterGenerator.h"
+	"iostream"
 
-1555720343 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
+1555720747 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
@@ -44,18 +47,57 @@
 	<ctime>
 	<iostream>
 
-1555718165 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
+1555731402 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
 1555641991 source:/home/csuser/GroupCWordScramble/utilities/GetRandomLetter.cpp
 	"GetRandomLetter.h"
 
-1555720230 /home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.h
+1555730952 /home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.h
 	<vector>
 	<cstdlib>
 	<stdexcept>
 	<map>
 
-1555720242 source:/home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.cpp
+1555731388 source:/home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.cpp
 	"RandomLetterGenerator.h"
+
+1555790818 source:/home/csuser/GroupCWordScramble/fileio/DictionaryFileReader.cpp
+	"DictionaryFileReader.h"
+
+1555790830 /home/csuser/GroupCWordScramble/fileio/DictionaryFileReader.h
+	"../model/Dictionary.h"
+	"../utilities/Utils.h"
+	<fstream>
+	<vector>
+	<iostream>
+	<algorithm>
+	<cctype>
+
+1555732543 /home/csuser/GroupCWordScramble/model/WordCollection.h
+	<vector>
+	<string>
+	<iostream>
+	<algorithm>
+
+1555781793 source:/home/csuser/GroupCWordScramble/model/WordCollection.cpp
+	"WordCollection.h"
+
+1555782971 /home/csuser/GroupCWordScramble/utilities/Utils.h
+	<string>
+	<cctype>
+	<algorithm>
+	<iostream>
+
+1555782980 source:/home/csuser/GroupCWordScramble/utilities/Utils.cpp
+	"Utils.h"
+
+1555783298 source:/home/csuser/GroupCWordScramble/model/Dictionary.cpp
+	"Dictionary.h"
+
+1555783330 /home/csuser/GroupCWordScramble/model/Dictionary.h
+	<vector>
+	<string>
+	<iostream>
+	<algorithm>
 

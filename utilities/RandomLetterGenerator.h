@@ -14,7 +14,7 @@ class RandomLetterGenerator
 {
 
 public:
-    static char* makeRandomUniqueLetterArray(size_t size);
+    static vector<char> makeRandomUniqueLetterArray(size_t size);
 
 private:
     static vector<char> createWeightedAlphabetVector();

@@ -12,7 +12,11 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
+					<Add directory="fileio" />
+					<Add directory="model" />
+					<Add directory="utilities" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -23,6 +27,9 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-s" />
+					<Add directory="fileio" />
+					<Add directory="model" />
+					<Add directory="utilities" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -32,7 +39,20 @@
 		<Linker>
 			<Add option="`fltk-config --ldstaticflags`" />
 		</Linker>
+		<Unit filename="fileio/DictionaryFileReader.cpp" />
+		<Unit filename="fileio/DictionaryFileReader.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="model/Dictionary.cpp" />
+		<Unit filename="model/Dictionary.h" />
+		<Unit filename="other/dictionary.txt" />
+		<Unit filename="other/notes.txt" />
+		<Unit filename="other/test.txt">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="utilities/RandomLetterGenerator.cpp" />
+		<Unit filename="utilities/RandomLetterGenerator.h" />
+		<Unit filename="utilities/Utils.cpp" />
+		<Unit filename="utilities/Utils.h" />
 		<Unit filename="view/WordScrambleWindow.cpp" />
 		<Unit filename="view/WordScrambleWindow.h" />
 		<Extensions>

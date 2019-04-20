@@ -3,7 +3,7 @@
 namespace util
 {
 
-char* RandomLetterGenerator::makeRandomUniqueLetterArray(size_t charCount)
+vector<char> RandomLetterGenerator::makeRandomUniqueLetterArray(size_t charCount)
 {
 
     if (charCount > 26)
@@ -12,13 +12,13 @@ char* RandomLetterGenerator::makeRandomUniqueLetterArray(size_t charCount)
     }
     vector<char> weightedAlphabet = RandomLetterGenerator::createWeightedAlphabetVector();
 
-    char* output = new char[charCount]();
+    vector<char> output;
 
     for (size_t i = 0; i < charCount; i++)
     {
         size_t randomIndex = rand() % weightedAlphabet.size();
         char newChar = weightedAlphabet[randomIndex];
-        output[i] = newChar;
+        output.push_back(newChar);
         RandomLetterGenerator::removeEach(newChar, &weightedAlphabet);
 
 
