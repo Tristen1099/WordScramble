@@ -1,17 +1,20 @@
 # depslib dependency file v1.0
-1555549582 source:/home/csuser/Desktop/GroupCWordScramble/main.cpp
+1555735655 source:/home/csuser/Desktop/GroupCWordScramble/main.cpp
 	"view/WordScrambleWindow.h"
 
-1555559244 /home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.h
+1555737248 /home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
 	<FL/Fl_Button.H>
+	<Fl/Fl_Input.H>
+	<FL/Fl_Text_Buffer.H>
+	<FL/Fl_Text_Display.H>
 	<vector>
 	<iostream>
-	"GetRandomLetter.h"
+	"../utilities/RandomLetterGenerator.h"
 
-1555560395 source:/home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.cpp
+1555737296 source:/home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
 1555539783 source:/home/csuser/Downloads/GroupCWordScramble.4/main.cpp
@@ -32,11 +35,14 @@
 	"../utilities/RandomLetterGenerator.h"
 	"iostream"
 
-1555720747 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
+1555791915 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
 	<FL/Fl_Button.H>
+	<Fl/Fl_Input.H>
+	<FL/Fl_Text_Buffer.H>
+	<FL/Fl_Text_Display.H>
 	<vector>
 	<iostream>
 	"../utilities/RandomLetterGenerator.h"
@@ -47,7 +53,7 @@
 	<ctime>
 	<iostream>
 
-1555731402 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
+1555791970 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
 1555641991 source:/home/csuser/GroupCWordScramble/utilities/GetRandomLetter.cpp
@@ -62,7 +68,9 @@
 1555731388 source:/home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.cpp
 	"RandomLetterGenerator.h"
 
-1555790818 source:/home/csuser/GroupCWordScramble/fileio/DictionaryFileReader.cpp
+1555731388 D
+
+1555791449 source:/home/csuser/GroupCWordScramble/fileio/DictionaryFileReader.cpp
 	"DictionaryFileReader.h"
 
 1555790830 /home/csuser/GroupCWordScramble/fileio/DictionaryFileReader.h
@@ -100,4 +108,17 @@
 	<string>
 	<iostream>
 	<algorithm>
+
+1555783330 >
+
+1555733752 /home/csuser/Desktop/GroupCWordScramble/utilities/RandomLetterGenerator.h
+	<vector>
+	<cstdlib>
+	<stdexcept>
+	<map>
+
+1555733752 source:/home/csuser/Desktop/GroupCWordScramble/utilities/RandomLetterGenerator.cpp
+	"RandomLetterGenerator.h"
+
+1555733752 gin/master
 

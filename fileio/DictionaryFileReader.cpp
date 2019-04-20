@@ -25,8 +25,6 @@ Dictionary* DictionaryFileReader::readFileToDictionary()
         words.push_back(removeWhitespaces(line));
     }
 
-
-
     return new Dictionary(words);
 }
 
