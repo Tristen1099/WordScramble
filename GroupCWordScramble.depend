@@ -45,17 +45,18 @@
 	<ctime>
 	<iostream>
 
-1555703153 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
+1555718165 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
 1555641991 source:/home/csuser/GroupCWordScramble/utilities/GetRandomLetter.cpp
 	"GetRandomLetter.h"
 
-1555703449 /home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.h
+1555719412 /home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.h
 	<vector>
 	<cstdlib>
 	<stdexcept>
+	<map>
 
-1555703109 source:/home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.cpp
+1555719742 source:/home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.cpp
 	"RandomLetterGenerator.h"
 

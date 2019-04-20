@@ -23,8 +23,9 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     {
 
         //cout << randomLet->getRandomLetter() << endl;
-        cout << randomLetterArray[i] << endl;
+        cout << randomLetterArray[i];
     }
+    cout << endl;
 
 
     this->timeRemaining = 0;
