@@ -5,6 +5,9 @@
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Button.H>
+#include <Fl/Fl_Input.H>
+#include <FL/Fl_Text_Buffer.H>
+#include <FL/Fl_Text_Display.H>
 
 
 #include <vector>
@@ -20,6 +23,7 @@ using namespace util;
 namespace view
 {
 
+
 class WordScrambleWindow : public Fl_Window
 {
 
@@ -28,12 +32,15 @@ private:
     Fl_Button* newGameButton;
     Fl_Box *gameTitle;
     vector<char> randomLetters;
+    Fl_Input* wordGuessInput;
+    Fl_Text_Buffer *summaryOutputTextBuffer;
+    Fl_Text_Display *summaryOutputTextDisplay;
 
 public:
     WordScrambleWindow(int width, int height, const char* title);
     virtual ~WordScrambleWindow();
     static void cbStartNewGame(Fl_Widget* widget, void* data);
-
+    void setSummaryText(const string& outputText);
 
 };
 
