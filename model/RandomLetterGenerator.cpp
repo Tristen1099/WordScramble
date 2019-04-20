@@ -1,9 +1,9 @@
 #include "RandomLetterGenerator.h"
 
-namespace util
+namespace model
 {
 
-vector<char> RandomLetterGenerator::makeRandomUniqueLetterArray(size_t charCount)
+vector<char> RandomLetterGenerator::makeRandomLetterCollection(size_t charCount)
 {
 
     if (charCount > 26)
@@ -19,8 +19,7 @@ vector<char> RandomLetterGenerator::makeRandomUniqueLetterArray(size_t charCount
         size_t randomIndex = rand() % weightedAlphabet.size();
         char newChar = weightedAlphabet[randomIndex];
         output.push_back(newChar);
-        RandomLetterGenerator::removeEach(newChar, &weightedAlphabet);
-
+        //RandomLetterGenerator::removeEach(newChar, &weightedAlphabet);
 
     }
 

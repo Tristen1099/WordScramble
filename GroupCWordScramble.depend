@@ -29,13 +29,13 @@
 	<ctime>
 	<iostream>
 
-1555790925 source:/home/csuser/GroupCWordScramble/main.cpp
+1555794271 source:/home/csuser/GroupCWordScramble/main.cpp
 	"view/WordScrambleWindow.h"
 	"DictionaryFileReader.h"
-	"../utilities/RandomLetterGenerator.h"
+	"../model/RandomLetterGenerator.h"
 	"iostream"
 
-1555791915 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
+1555793422 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
@@ -45,7 +45,7 @@
 	<FL/Fl_Text_Display.H>
 	<vector>
 	<iostream>
-	"../utilities/RandomLetterGenerator.h"
+	"../model/RandomLetterGenerator.h"
 
 1555641623 /home/csuser/GroupCWordScramble/utilities/GetRandomLetter.h
 	<vector>
@@ -53,7 +53,7 @@
 	<ctime>
 	<iostream>
 
-1555791970 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
+1555794168 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
 1555641991 source:/home/csuser/GroupCWordScramble/utilities/GetRandomLetter.cpp
@@ -121,4 +121,13 @@
 	"RandomLetterGenerator.h"
 
 1555733752 gin/master
+
+1555794086 source:/home/csuser/GroupCWordScramble/model/RandomLetterGenerator.cpp
+	"RandomLetterGenerator.h"
+
+1555793991 /home/csuser/GroupCWordScramble/model/RandomLetterGenerator.h
+	<vector>
+	<cstdlib>
+	<stdexcept>
+	<map>
 

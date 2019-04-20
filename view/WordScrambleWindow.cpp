@@ -38,9 +38,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 
 
 
-
-
-    this->randomLetters = RandomLetterGenerator::makeRandomUniqueLetterArray(6);
+    this->randomLetters = RandomLetterGenerator::makeRandomLetterCollection(6);
 
     string randomLetter1 = string(1,this->randomLetters[0]);
     cout<<randomLetter1<<endl;

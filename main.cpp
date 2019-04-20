@@ -4,14 +4,15 @@ using namespace view;
 #include "DictionaryFileReader.h"
 using namespace fileio;
 
-#include "../utilities/RandomLetterGenerator.h"
-using namespace util;
+#include "../model/RandomLetterGenerator.h"
+using namespace model;
 
 #include "iostream"
 using namespace std;
 
 int main (int argc, char ** argv)
 {
+
 
     srand(time(0));
     WordScrambleWindow mainWindow(570, 375, "A4: Word Scramble by Jacob Slattery and Tristen Rivera");
@@ -23,15 +24,15 @@ int main (int argc, char ** argv)
 
 
 
-    /*
+/*
     DictionaryFileReader reader("/home/csuser/GroupCWordScramble/other/dictionary.txt");
     Dictionary* dictionary = reader.readFileToDictionary();
 
     //vector<string> collection = {"jump", "jump" , "jump", "otherthingas"};
     //dictionary->setCollection(collection);
 
-
-    vector<char> letters = RandomLetterGenerator::makeRandomUniqueLetterArray(15);
+    RandomLetterGenerator randomLetterGenerator;
+    vector<char> letters = randomLetterGenerator.makeRandomLetterCollection(6);
 
     vector<string> out = dictionary->findAllWordsContaining(letters);
 
@@ -53,4 +54,5 @@ int main (int argc, char ** argv)
 
     return 0;
     */
+
 }

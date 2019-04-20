@@ -17,8 +17,8 @@ using namespace std;
 ///Local import don't work after being pulled so try using ../{package_name}/{class_name}
 /// - Jacob
 
-#include "../utilities/RandomLetterGenerator.h"
-using namespace util;
+#include "../model/RandomLetterGenerator.h"
+using namespace model;
 
 namespace view
 {

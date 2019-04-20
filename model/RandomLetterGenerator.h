@@ -1,20 +1,21 @@
 #ifndef RANDOMLETTERGENERATOR_H
 #define RANDOMLETTERGENERATOR_H
 
+
 #include <vector>
 #include <cstdlib>
 #include <stdexcept>
 #include <map>
 using namespace std;
 
-namespace util
+namespace model
 {
 
 class RandomLetterGenerator
 {
 
 public:
-    static vector<char> makeRandomUniqueLetterArray(size_t size);
+    static vector<char> makeRandomLetterCollection(size_t size);
 
 private:
     static vector<char> createWeightedAlphabetVector();
