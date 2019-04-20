@@ -1,17 +1,20 @@
 # depslib dependency file v1.0
-1555733752 source:/home/csuser/Desktop/GroupCWordScramble/main.cpp
+1555735655 source:/home/csuser/Desktop/GroupCWordScramble/main.cpp
 	"view/WordScrambleWindow.h"
 
-1555733752 /home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.h
+1555737248 /home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
 	<FL/Fl_Button.H>
+	<Fl/Fl_Input.H>
+	<FL/Fl_Text_Buffer.H>
+	<FL/Fl_Text_Display.H>
 	<vector>
 	<iostream>
 	"../utilities/RandomLetterGenerator.h"
 
-1555733752 source:/home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.cpp
+1555737296 source:/home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
 1555539783 source:/home/csuser/Downloads/GroupCWordScramble.4/main.cpp
