@@ -7,6 +7,9 @@
 #include <map>
 using namespace std;
 
+namespace util
+{
+
 class RandomLetterGenerator
 {
 
@@ -19,5 +22,7 @@ private:
     static void removeEach(char charToRemove, vector<char>* charVector);
 
 };
+
+}
 
 #endif // RANDOMLETTERGENERATOR_H

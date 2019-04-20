@@ -1,5 +1,8 @@
 #include "RandomLetterGenerator.h"
 
+namespace util
+{
+
 char* RandomLetterGenerator::makeRandomUniqueLetterArray(size_t charCount)
 {
 
@@ -106,4 +109,6 @@ void RandomLetterGenerator::removeEach(char charToRemove, vector<char>* charVect
         }
 
     }
+}
+
 }

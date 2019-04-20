@@ -29,14 +29,13 @@
 1555646205 source:/home/csuser/GroupCWordScramble/main.cpp
 	"view/WordScrambleWindow.h"
 
-1555645659 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
+1555720343 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
 	<FL/Fl_Button.H>
 	<vector>
 	<iostream>
-	"../utilities/GetRandomLetter.h"
 	"../utilities/RandomLetterGenerator.h"
 
 1555641623 /home/csuser/GroupCWordScramble/utilities/GetRandomLetter.h
@@ -51,12 +50,12 @@
 1555641991 source:/home/csuser/GroupCWordScramble/utilities/GetRandomLetter.cpp
 	"GetRandomLetter.h"
 
-1555719412 /home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.h
+1555720230 /home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.h
 	<vector>
 	<cstdlib>
 	<stdexcept>
 	<map>
 
-1555719742 source:/home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.cpp
+1555720242 source:/home/csuser/GroupCWordScramble/utilities/RandomLetterGenerator.cpp
 	"RandomLetterGenerator.h"
 
