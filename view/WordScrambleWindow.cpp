@@ -36,31 +36,10 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->summaryOutputTextDisplay->buffer(summaryOutputTextBuffer);
     this->summaryOutputTextDisplay->color(backgroundColor);
 
+    this->buttonLetterBoard = vector<string*>();
+    this->buttonBoard = vector<Fl_Button*>();
 
-
-    this->randomLetters = RandomLetterGenerator::makeRandomLetterCollection(6);
-
-    string randomLetter1 = string(1,this->randomLetters[0]);
-    cout<<randomLetter1<<endl;
-    string randomLetter2 = string(1,this->randomLetters[1]);
-    cout<<randomLetter2<<endl;
-    string randomLetter3 = string(1,this->randomLetters[2]);
-    cout<<randomLetter3<<endl;
-    string randomLetter4 = string(1,this->randomLetters[3]);
-    cout<<randomLetter4<<endl;
-    string randomLetter5 = string(1,this->randomLetters[4]);
-    cout<<randomLetter5<<endl;
-    string randomLetter6 = string(1,this->randomLetters[5]);
-    cout<<randomLetter6<<endl;
-
-    //There's a memory issue here for some reason cout works but setting it to the box does not work
-
-    Fl_Box* letter1 = new Fl_Box(FL_RSHADOW_BOX, 85,300, 40,40,randomLetter1.c_str());
-    Fl_Box* letter2 = new Fl_Box(FL_RSHADOW_BOX, 155,300, 40,40,randomLetter2.c_str());
-    Fl_Box* letter3 = new Fl_Box(FL_RSHADOW_BOX, 225,300, 40,40,randomLetter3.c_str());
-    Fl_Box* letter4 = new Fl_Box(FL_RSHADOW_BOX, 295,300, 40,40,randomLetter4.c_str());
-    Fl_Box* letter5 = new Fl_Box(FL_RSHADOW_BOX, 365,300, 40,40,randomLetter5.c_str());
-    Fl_Box* letter6 = new Fl_Box(FL_RSHADOW_BOX, 435,300, 40,40,randomLetter6.c_str());
+    this->createButtonBoardInline(6);
 
 
     this->timeRemaining = 0;
@@ -83,10 +62,49 @@ void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
     cout<<"TEST Enter"<<endl;
 }
 
+void WordScrambleWindow::cbLetterButtonPressed(Fl_Widget* widget, void* data)
+{
+    WordScrambleWindow* window = (WordScrambleWindow*)data;
+    cout << "User pressed: " << widget->label() << endl;
+    Fl_Button* button = (Fl_Button*)widget;
+    button->hide();
+
+    window = nullptr;
+    button = nullptr;
+}
+
 void WordScrambleWindow::setSummaryText(const string& outputText)
 {
+
     this->summaryOutputTextBuffer->text(outputText.c_str());
 }
+
+inline void WordScrambleWindow::createButtonBoardInline(size_t buttonCount)
+{
+
+    //WordScrambleWindow* window = (WordScrambleWindow*)data;
+    vector<char> randomLetters = RandomLetterGenerator::makeRandomLetterCollection(buttonCount);
+
+    int offset = 0;
+    for (size_t i = 0; i < this->buttonBoard.size(); i++)
+    {
+        delete this->buttonLetterBoard[i];
+    }
+
+    for (size_t i = 0; i < buttonCount; i++)
+    {
+        this->buttonLetterBoard.push_back(new string(1,randomLetters[i]));
+    }
+
+    for (size_t i = 0; i < buttonCount; i++)
+    {
+        Fl_Button* letterButton = new Fl_Button(85+offset,300, 40,40,this->buttonLetterBoard[i]->c_str());
+        letterButton->callback(cbLetterButtonPressed, this);
+        offset += 70;
+        this->buttonBoard.push_back(letterButton);
+    }
+}
+
 
 WordScrambleWindow::~WordScrambleWindow()
 {
@@ -97,6 +115,15 @@ WordScrambleWindow::~WordScrambleWindow()
     delete this->summaryOutputTextDisplay;
     delete this->scrambleButton;
     delete this->enterButton;
+
+    for (size_t i = 0; i < this->buttonLetterBoard.size(); i++)
+    {
+        delete this->buttonLetterBoard[i];
+    }
+    for (size_t i = 0; i < this->buttonBoard.size(); i++)
+    {
+        delete this->buttonBoard[i];
+    }
 }
 
 }

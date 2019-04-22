@@ -27,16 +27,19 @@ namespace view
 class WordScrambleWindow : public Fl_Window
 {
 
+
 private:
     int timeRemaining;
     Fl_Button* newGameButton;
     Fl_Button* scrambleButton;
     Fl_Button* enterButton;
     Fl_Box *gameTitle;
-    vector<char> randomLetters;
     Fl_Input* wordGuessInput;
     Fl_Text_Buffer *summaryOutputTextBuffer;
     Fl_Text_Display *summaryOutputTextDisplay;
+
+    vector<Fl_Button*> buttonBoard;
+    vector<string*> buttonLetterBoard;
 
 public:
     WordScrambleWindow(int width, int height, const char* title);
@@ -44,7 +47,14 @@ public:
     static void cbStartNewGame(Fl_Widget* widget, void* data);
     static void cbScrambleLetters(Fl_Widget* widget, void* data);
     static void cbEnterWord(Fl_Widget* widget, void* data);
+    static void cbLetterButtonPressed(Fl_Widget* widget, void* data);
     void setSummaryText(const string& outputText);
+
+private:
+
+    inline void createButtonBoardInline(size_t buttonCount);
+
+
 
 };
 

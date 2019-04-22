@@ -131,3 +131,63 @@
 	<stdexcept>
 	<map>
 
+1555962395 source:/home/csuser/Downloads/GroupCWordScramble/fileio/DictionaryFileReader.cpp
+	"DictionaryFileReader.h"
+
+1555962395 /home/csuser/Downloads/GroupCWordScramble/fileio/DictionaryFileReader.h
+	"../model/Dictionary.h"
+	"../utilities/Utils.h"
+	<fstream>
+	<vector>
+	<iostream>
+	<algorithm>
+	<cctype>
+
+1555962395 /home/csuser/Downloads/GroupCWordScramble/model/Dictionary.h
+	<vector>
+	<string>
+	<iostream>
+	<algorithm>
+
+1555962395 /home/csuser/Downloads/GroupCWordScramble/utilities/Utils.h
+	<string>
+	<cctype>
+	<algorithm>
+	<iostream>
+
+1555962395 source:/home/csuser/Downloads/GroupCWordScramble/main.cpp
+	"view/WordScrambleWindow.h"
+	"DictionaryFileReader.h"
+	"../model/RandomLetterGenerator.h"
+	"iostream"
+
+1555972426 /home/csuser/Downloads/GroupCWordScramble/view/WordScrambleWindow.h
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Button.H>
+	<Fl/Fl_Input.H>
+	<FL/Fl_Text_Buffer.H>
+	<FL/Fl_Text_Display.H>
+	<vector>
+	<iostream>
+	"../model/RandomLetterGenerator.h"
+
+1555962395 /home/csuser/Downloads/GroupCWordScramble/model/RandomLetterGenerator.h
+	<vector>
+	<cstdlib>
+	<stdexcept>
+	<map>
+
+1555962395 source:/home/csuser/Downloads/GroupCWordScramble/model/Dictionary.cpp
+	"Dictionary.h"
+
+1555962395 source:/home/csuser/Downloads/GroupCWordScramble/utilities/Utils.cpp
+	"Utils.h"
+
+1555969504 source:/home/csuser/Downloads/GroupCWordScramble/view/WordScrambleWindow.cpp
+	"WordScrambleWindow.h"
+
+1555962395 source:/home/csuser/Downloads/GroupCWordScramble/model/RandomLetterGenerator.cpp
+	"RandomLetterGenerator.h"
+
