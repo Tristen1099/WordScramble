@@ -5,9 +5,10 @@
 	"../model/RandomLetterGenerator.h"
 	"iostream"
 
-1556041476 /home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.h
+1556047245 /home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
+	<FL/Fl_Dial.H>
 	<FL/Fl_Box.H>
 	<FL/Fl_Button.H>
 	<Fl/Fl_Input.H>
@@ -18,7 +19,7 @@
 	<algorithm>
 	"../model/RandomLetterGenerator.h"
 
-1556041476 source:/home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.cpp
+1556047106 source:/home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
 1555539783 source:/home/csuser/Downloads/GroupCWordScramble.4/main.cpp

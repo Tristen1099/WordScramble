@@ -3,6 +3,7 @@
 
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
+#include <FL/Fl_Dial.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Button.H>
 #include <Fl/Fl_Input.H>
@@ -15,8 +16,6 @@
 #include <algorithm>
 using namespace std;
 
-///Local import don't work after being pulled so try using ../{package_name}/{class_name}
-/// - Jacob
 
 #include "../model/RandomLetterGenerator.h"
 using namespace model;
@@ -34,15 +33,18 @@ private:
     Fl_Button* newGameButton;
     Fl_Button* scrambleButton;
     Fl_Button* enterButton;
-    Fl_Box *gameTitle;
+    Fl_Box* gameTitle;
+    Fl_Box* scoreTitle;
+    Fl_Box* currentScore;
     Fl_Input* wordGuessInput;
-    Fl_Text_Buffer *summaryOutputTextBuffer;
-    Fl_Text_Display *summaryOutputTextDisplay;
+    Fl_Text_Buffer* summaryOutputTextBuffer;
+    Fl_Text_Display* summaryOutputTextDisplay;
+    Fl_Dial* timer;
 
     vector<Fl_Button*> buttonBoard;
     vector<string*> buttonLetterBoard;
 
-    int letterCount = 5;
+    int letterCount = 7;
     string userWordInput;
     void addLetterToInput(const char* letter);
 
@@ -58,7 +60,6 @@ public:
 private:
 
         inline void createButtonBoardInline(size_t buttonCount);
-
 
 };
 

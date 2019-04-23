@@ -11,6 +11,13 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->enterButton = new Fl_Button(440, 248, 60, 30, "Enter");
     this->gameTitle = new Fl_Box(270,8, 50,50,"~The Word Scrambler~");
     this->wordGuessInput = new Fl_Input(230, 250, 200, 25, "Enter Guess Here:");
+    this->scoreTitle = new Fl_Box(522,170, 50,50,"~Score~");
+    this->currentScore = new Fl_Box(522,195, 50,50,"0");
+    this->timer = new Fl_Dial(512,70,70,70,"0");
+
+    this->timer->type(FL_LINE_DIAL);
+    this->timer->angle1(90);
+    cout << this->timer->angle1() << endl;
     this->wordGuessInput->deactivate();
 
     this->newGameButton->callback(cbStartNewGame, this);
@@ -18,6 +25,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->enterButton->callback(cbEnterWord, this);
 
     Fl_Fontsize fontSize = 40;
+    Fl_Fontsize scoreFontSize = 20;
     Fl_Font fontStyle = 10;
     Fl_Color fontColor = fl_rgb_color(195,118,0);
     Fl_Color backgroundColor = fl_rgb_color(224,193,255);
@@ -26,10 +34,17 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->newGameButton->color(buttonColor);
     this->scrambleButton->color(buttonColor);
     this->enterButton->color(buttonColor);
+    this->gameTitle->labelcolor(fontColor);
+    this->scoreTitle->labelcolor(fontColor);
+    this->timer->labelcolor(fontColor);
 
     this->gameTitle->labelsize(fontSize);
+    this->scoreTitle->labelsize(scoreFontSize);
+
     this->gameTitle->labelfont(fontStyle);
-    this->gameTitle->labelcolor(fontColor);
+    this->scoreTitle->labelfont(fontStyle);
+    this->timer->labelfont(fontStyle);
+
 
     this->summaryOutputTextBuffer = new Fl_Text_Buffer();
     this->summaryOutputTextDisplay = new Fl_Text_Display(105, 70, 390, 150);
@@ -204,6 +219,8 @@ WordScrambleWindow::~WordScrambleWindow()
     delete this->summaryOutputTextDisplay;
     delete this->scrambleButton;
     delete this->enterButton;
+    delete this->scoreTitle;
+    delete this->currentScore;
 
     for (size_t i = 0; i < this->buttonLetterBoard.size(); i++)
     {
