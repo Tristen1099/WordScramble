@@ -67,13 +67,12 @@ void WordScrambleWindow::cbScrambleLetters(Fl_Widget* widget, void* data)
     for (size_t i = 0; i < window->buttonBoard.size(); i++)
     {
         window->buttonBoard[i]->hide();
-        delete window->buttonLetterBoard[i];
         delete window->buttonBoard[i];
 
     }
     window->buttonBoard.clear();
-    window->buttonLetterBoard.clear();
     int offset = 0;
+    window->begin();
     for (size_t i = 0; i < window->letterCount; i++)
     {
         Fl_Button* letterButton = new Fl_Button(55+offset,300, 40,40,window->buttonLetterBoard[i]->c_str());
@@ -92,8 +91,8 @@ void WordScrambleWindow::cbScrambleLetters(Fl_Widget* widget, void* data)
         }
 
         window->buttonBoard.push_back(letterButton);
-        window->add(letterButton);
     }
+    window->end();
 
 }
 
