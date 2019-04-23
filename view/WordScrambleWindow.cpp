@@ -6,11 +6,11 @@ namespace view
 WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
     begin();
-    this->newGameButton = new Fl_Button(3, 70, 90, 30, "New Game");
-    this->scrambleButton = new Fl_Button(485, 296, 80, 50, "Scramble");
-    this->enterButton = new Fl_Button(422, 248, 60, 30, "Enter");
-    this->gameTitle = new Fl_Box(255,8, 50,50,"~The Word Scrambler~");
-    this->wordGuessInput = new Fl_Input(212, 250, 200, 25, "Enter Guess Here:");
+    this->newGameButton = new Fl_Button(8, 70, 90, 30, "New Game");
+    this->scrambleButton = new Fl_Button(475, 296, 80, 50, "Scramble");
+    this->enterButton = new Fl_Button(440, 248, 60, 30, "Enter");
+    this->gameTitle = new Fl_Box(270,8, 50,50,"~The Word Scrambler~");
+    this->wordGuessInput = new Fl_Input(230, 250, 200, 25, "Enter Guess Here:");
 
     this->newGameButton->callback(cbStartNewGame, this);
     this->scrambleButton->callback(cbScrambleLetters, this);
@@ -31,7 +31,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->gameTitle->labelcolor(fontColor);
 
     this->summaryOutputTextBuffer = new Fl_Text_Buffer();
-    this->summaryOutputTextDisplay = new Fl_Text_Display(95, 70, 380, 150);
+    this->summaryOutputTextDisplay = new Fl_Text_Display(105, 70, 390, 150);
     this->summaryOutputTextDisplay->textfont(FL_COURIER);
     this->summaryOutputTextDisplay->buffer(summaryOutputTextBuffer);
     this->summaryOutputTextDisplay->color(backgroundColor);
@@ -39,7 +39,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->buttonLetterBoard = vector<string*>();
     this->buttonBoard = vector<Fl_Button*>();
 
-    this->createButtonBoardInline(6);
+    this->createButtonBoardInline(this->letterCount);
 
 
     this->timeRemaining = 0;
@@ -49,7 +49,6 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 
 void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
 {
-    cout<<"TEST New Game"<<endl;
 }
 
 void WordScrambleWindow::cbScrambleLetters(Fl_Widget* widget, void* data)
@@ -65,12 +64,20 @@ void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
 void WordScrambleWindow::cbLetterButtonPressed(Fl_Widget* widget, void* data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
-    cout << "User pressed: " << widget->label() << endl;
+    window->addLetterToInput(widget->label());
     Fl_Button* button = (Fl_Button*)widget;
     button->hide();
 
     window = nullptr;
     button = nullptr;
+}
+
+void WordScrambleWindow::addLetterToInput(const char* letter){
+
+cout << letter << endl;
+this->userWordInput += letter;
+this->wordGuessInput->insert(letter, 1);
+
 }
 
 void WordScrambleWindow::setSummaryText(const string& outputText)
@@ -98,9 +105,16 @@ inline void WordScrambleWindow::createButtonBoardInline(size_t buttonCount)
 
     for (size_t i = 0; i < buttonCount; i++)
     {
-        Fl_Button* letterButton = new Fl_Button(85+offset,300, 40,40,this->buttonLetterBoard[i]->c_str());
+        Fl_Button* letterButton = new Fl_Button(55+offset,300, 40,40,this->buttonLetterBoard[i]->c_str());
         letterButton->callback(cbLetterButtonPressed, this);
-        offset += 70;
+        if(this->letterCount == 5){
+          offset += 85;
+        }else if(this->letterCount == 6){
+          offset += 70;
+        }else if (this->letterCount == 7){
+          offset += 60;
+        }
+
         this->buttonBoard.push_back(letterButton);
     }
 }

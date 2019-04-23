@@ -41,6 +41,10 @@ private:
     vector<Fl_Button*> buttonBoard;
     vector<string*> buttonLetterBoard;
 
+    int letterCount = 7;
+    string userWordInput;
+    void addLetterToInput(const char* letter);
+
 public:
     WordScrambleWindow(int width, int height, const char* title);
     virtual ~WordScrambleWindow();
