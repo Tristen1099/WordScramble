@@ -49,11 +49,52 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 
 void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
 {
+    cout << "TEST New Game" << endl;
+    WordScrambleWindow* window = (WordScrambleWindow*)data;
+
+
+    window->createButtonBoardInline(window->letterCount);
+
+
+
 }
 
 void WordScrambleWindow::cbScrambleLetters(Fl_Widget* widget, void* data)
 {
     cout<<"TEST Scramble"<<endl;
+    WordScrambleWindow* window = (WordScrambleWindow*)data;
+    std::random_shuffle ( window->buttonLetterBoard.begin(), window->buttonLetterBoard.end() );
+    for (size_t i = 0; i < window->buttonBoard.size(); i++)
+    {
+        window->buttonBoard[i]->hide();
+        delete window->buttonLetterBoard[i];
+        delete window->buttonBoard[i];
+
+    }
+    window->buttonBoard.clear();
+    window->buttonLetterBoard.clear();
+    int offset = 0;
+    for (size_t i = 0; i < window->letterCount; i++)
+    {
+        Fl_Button* letterButton = new Fl_Button(55+offset,300, 40,40,window->buttonLetterBoard[i]->c_str());
+        letterButton->callback(cbLetterButtonPressed, window);
+        if(window->letterCount == 5)
+        {
+            offset += 85;
+        }
+        else if(window->letterCount == 6)
+        {
+            offset += 70;
+        }
+        else if (window->letterCount == 7)
+        {
+            offset += 60;
+        }
+
+        window->buttonBoard.push_back(letterButton);
+        window->add(letterButton);
+    }
+
 }
 
 void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
@@ -72,11 +113,12 @@ void WordScrambleWindow::cbLetterButtonPressed(Fl_Widget* widget, void* data)
     button = nullptr;
 }
 
-void WordScrambleWindow::addLetterToInput(const char* letter){
+void WordScrambleWindow::addLetterToInput(const char* letter)
+{
 
-cout << letter << endl;
-this->userWordInput += letter;
-this->wordGuessInput->insert(letter, 1);
+    cout << letter << endl;
+    this->userWordInput += letter;
+    this->wordGuessInput->insert(letter, 1);
 
 }
 
@@ -93,29 +135,45 @@ inline void WordScrambleWindow::createButtonBoardInline(size_t buttonCount)
     vector<char> randomLetters = RandomLetterGenerator::makeRandomLetterCollection(buttonCount);
 
     int offset = 0;
+
+
+
     for (size_t i = 0; i < this->buttonBoard.size(); i++)
     {
+        this->buttonBoard[i]->hide();
         delete this->buttonLetterBoard[i];
+        delete this->buttonBoard[i];
+
     }
+
+    this->buttonBoard.clear();
+    this->buttonLetterBoard.clear();
 
     for (size_t i = 0; i < buttonCount; i++)
     {
         this->buttonLetterBoard.push_back(new string(1,randomLetters[i]));
+
     }
 
     for (size_t i = 0; i < buttonCount; i++)
     {
         Fl_Button* letterButton = new Fl_Button(55+offset,300, 40,40,this->buttonLetterBoard[i]->c_str());
         letterButton->callback(cbLetterButtonPressed, this);
-        if(this->letterCount == 5){
-          offset += 85;
-        }else if(this->letterCount == 6){
-          offset += 70;
-        }else if (this->letterCount == 7){
-          offset += 60;
+        if(this->letterCount == 5)
+        {
+            offset += 85;
+        }
+        else if(this->letterCount == 6)
+        {
+            offset += 70;
+        }
+        else if (this->letterCount == 7)
+        {
+            offset += 60;
         }
 
         this->buttonBoard.push_back(letterButton);
+
     }
 }
 

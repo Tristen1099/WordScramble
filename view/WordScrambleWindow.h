@@ -12,6 +12,7 @@
 
 #include <vector>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 ///Local import don't work after being pulled so try using ../{package_name}/{class_name}
@@ -41,9 +42,10 @@ private:
     vector<Fl_Button*> buttonBoard;
     vector<string*> buttonLetterBoard;
 
-    int letterCount = 7;
+    int letterCount = 6;
     string userWordInput;
     void addLetterToInput(const char* letter);
+    bool gameStarted = false;
 
 public:
     WordScrambleWindow(int width, int height, const char* title);

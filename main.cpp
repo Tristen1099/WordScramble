@@ -24,35 +24,35 @@ int main (int argc, char ** argv)
 
 
 
-/*
-    DictionaryFileReader reader("/home/csuser/GroupCWordScramble/other/dictionary.txt");
-    Dictionary* dictionary = reader.readFileToDictionary();
+    /*
+        DictionaryFileReader reader("/home/csuser/GroupCWordScramble/other/dictionary.txt");
+        Dictionary* dictionary = reader.readFileToDictionary();
 
-    //vector<string> collection = {"jump", "jump" , "jump", "otherthingas"};
-    //dictionary->setCollection(collection);
+        //vector<string> collection = {"jump", "jump" , "jump", "otherthingas"};
+        //dictionary->setCollection(collection);
 
-    RandomLetterGenerator randomLetterGenerator;
-    vector<char> letters = randomLetterGenerator.makeRandomLetterCollection(6);
+        RandomLetterGenerator randomLetterGenerator;
+        vector<char> letters = randomLetterGenerator.makeRandomLetterCollection(6);
 
-    vector<string> out = dictionary->findAllWordsContaining(letters);
+        vector<string> out = dictionary->findAllWordsContaining(letters);
 
-    for (size_t i = 0; i < out.size(); i++)
-    {
-        cout << out[i] << endl;
-    }
+        for (size_t i = 0; i < out.size(); i++)
+        {
+            cout << out[i] << endl;
+        }
 
-    cout << endl;
-    for (size_t i = 0; i < letters.size(); i++)
-    {
-        cout << letters[i];
-    }
-    cout << endl;
+        cout << endl;
+        for (size_t i = 0; i < letters.size(); i++)
+        {
+            cout << letters[i];
+        }
+        cout << endl;
 
 
 
-    delete dictionary;
+        delete dictionary;
 
-    return 0;
-    */
+        return 0;
+        */
 
 }

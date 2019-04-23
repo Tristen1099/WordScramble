@@ -9,7 +9,8 @@ DictionaryFileReader::DictionaryFileReader(const string& filename)
     this->filename = filename;
 }
 
-bool DictionaryFileReader::char_isspace(char c) {
+bool DictionaryFileReader::char_isspace(char c)
+{
     return std::isspace(static_cast<unsigned char>(c));
 }
 
