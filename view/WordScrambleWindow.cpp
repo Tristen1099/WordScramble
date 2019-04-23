@@ -52,9 +52,9 @@ void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
     cout << "TEST New Game" << endl;
     WordScrambleWindow* window = (WordScrambleWindow*)data;
 
-
+    window->begin();
     window->createButtonBoardInline(window->letterCount);
-
+    window->end();
 
 
 }

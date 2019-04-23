@@ -45,7 +45,6 @@ private:
     int letterCount = 6;
     string userWordInput;
     void addLetterToInput(const char* letter);
-    bool gameStarted = false;
 
 public:
     WordScrambleWindow(int width, int height, const char* title);
