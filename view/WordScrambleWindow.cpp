@@ -11,6 +11,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->enterButton = new Fl_Button(440, 248, 60, 30, "Enter");
     this->gameTitle = new Fl_Box(270,8, 50,50,"~The Word Scrambler~");
     this->wordGuessInput = new Fl_Input(230, 250, 200, 25, "Enter Guess Here:");
+    this->wordGuessInput->deactivate();
 
     this->newGameButton->callback(cbStartNewGame, this);
     this->scrambleButton->callback(cbScrambleLetters, this);
@@ -49,29 +50,34 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 
 void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
 {
-    cout << "TEST New Game" << endl;
     WordScrambleWindow* window = (WordScrambleWindow*)data;
 
     window->begin();
     window->createButtonBoardInline(window->letterCount);
+    window->wordGuessInput->value("");
     window->end();
-
 
 }
 
 void WordScrambleWindow::cbScrambleLetters(Fl_Widget* widget, void* data)
 {
-    cout<<"TEST Scramble"<<endl;
+
     WordScrambleWindow* window = (WordScrambleWindow*)data;
+
     std::random_shuffle ( window->buttonLetterBoard.begin(), window->buttonLetterBoard.end() );
+
     for (size_t i = 0; i < window->buttonBoard.size(); i++)
     {
         window->buttonBoard[i]->hide();
         delete window->buttonBoard[i];
 
     }
+
     window->buttonBoard.clear();
+    window->wordGuessInput->value("");
+
     int offset = 0;
+
     window->begin();
     for (size_t i = 0; i < window->letterCount; i++)
     {
