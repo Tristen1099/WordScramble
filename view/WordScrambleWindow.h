@@ -42,7 +42,7 @@ private:
     vector<Fl_Button*> buttonBoard;
     vector<string*> buttonLetterBoard;
 
-    int letterCount = 6;
+    int letterCount = 5;
     string userWordInput;
     void addLetterToInput(const char* letter);
 
@@ -57,8 +57,7 @@ public:
 
 private:
 
-    inline void createButtonBoardInline(size_t buttonCount);
-
+        inline void createButtonBoardInline(size_t buttonCount);
 
 
 };

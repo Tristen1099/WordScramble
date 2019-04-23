@@ -97,6 +97,12 @@ void WordScrambleWindow::cbScrambleLetters(Fl_Widget* widget, void* data)
         }
 
         window->buttonBoard.push_back(letterButton);
+
+        Fl_Color backgroundColor = fl_rgb_color(224,193,255);
+        Fl_Color selectionColor = fl_rgb_color(134,113,195);
+        letterButton->color(backgroundColor);
+        letterButton->selection_color(selectionColor);
+        letterButton->box(FL_RSHADOW_BOX);
     }
     window->end();
 
@@ -178,6 +184,12 @@ inline void WordScrambleWindow::createButtonBoardInline(size_t buttonCount)
         }
 
         this->buttonBoard.push_back(letterButton);
+
+        Fl_Color backgroundColor = fl_rgb_color(224,193,255);
+        Fl_Color selectionColor = fl_rgb_color(134,113,195);
+        letterButton->color(backgroundColor);
+        letterButton->selection_color(selectionColor);
+        letterButton->box(FL_RSHADOW_BOX);
 
     }
 }
