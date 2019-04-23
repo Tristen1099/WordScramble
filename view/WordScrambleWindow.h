@@ -29,7 +29,7 @@ class WordScrambleWindow : public Fl_Window
 
 
 private:
-    int timeRemaining;
+
     Fl_Button* newGameButton;
     Fl_Button* scrambleButton;
     Fl_Button* enterButton;
@@ -44,6 +44,7 @@ private:
     vector<Fl_Button*> buttonBoard;
     vector<string*> buttonLetterBoard;
 
+    int timeRemaining;
     int letterCount = 7;
     string userWordInput;
     void addLetterToInput(const char* letter);
@@ -59,7 +60,7 @@ public:
 
 private:
 
-        inline void createButtonBoardInline(size_t buttonCount);
+    inline void createButtonBoardInline(size_t buttonCount);
 
 };
 

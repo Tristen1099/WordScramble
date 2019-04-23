@@ -7,17 +7,19 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 {
     begin();
     this->newGameButton = new Fl_Button(8, 70, 90, 30, "New Game");
-    this->scrambleButton = new Fl_Button(475, 296, 80, 50, "Scramble");
+    this->scrambleButton = new Fl_Button(470, 296, 80, 50, "Scramble");
     this->enterButton = new Fl_Button(440, 248, 60, 30, "Enter");
     this->gameTitle = new Fl_Box(270,8, 50,50,"~The Word Scrambler~");
     this->wordGuessInput = new Fl_Input(230, 250, 200, 25, "Enter Guess Here:");
     this->scoreTitle = new Fl_Box(522,170, 50,50,"~Score~");
     this->currentScore = new Fl_Box(522,195, 50,50,"0");
     this->timer = new Fl_Dial(512,70,70,70,"0");
+    this->summaryOutputTextBuffer = new Fl_Text_Buffer();
+    this->summaryOutputTextDisplay = new Fl_Text_Display(105, 70, 390, 150);
 
     this->timer->type(FL_LINE_DIAL);
     this->timer->angle1(90);
-    cout << this->timer->angle1() << endl;
+
     this->wordGuessInput->deactivate();
 
     this->newGameButton->callback(cbStartNewGame, this);
@@ -37,6 +39,8 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->gameTitle->labelcolor(fontColor);
     this->scoreTitle->labelcolor(fontColor);
     this->timer->labelcolor(fontColor);
+    this->timer->color(backgroundColor);
+    this->summaryOutputTextDisplay->color(backgroundColor);
 
     this->gameTitle->labelsize(fontSize);
     this->scoreTitle->labelsize(scoreFontSize);
@@ -44,24 +48,24 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->gameTitle->labelfont(fontStyle);
     this->scoreTitle->labelfont(fontStyle);
     this->timer->labelfont(fontStyle);
+    this->newGameButton->box(FL_RSHADOW_BOX);
+    this->scrambleButton->box(FL_RSHADOW_BOX);
+    this->enterButton->box(FL_RSHADOW_BOX);
 
-
-    this->summaryOutputTextBuffer = new Fl_Text_Buffer();
-    this->summaryOutputTextDisplay = new Fl_Text_Display(105, 70, 390, 150);
     this->summaryOutputTextDisplay->textfont(FL_COURIER);
     this->summaryOutputTextDisplay->buffer(summaryOutputTextBuffer);
-    this->summaryOutputTextDisplay->color(backgroundColor);
 
     this->buttonLetterBoard = vector<string*>();
     this->buttonBoard = vector<Fl_Button*>();
 
     this->createButtonBoardInline(this->letterCount);
 
-
-    this->timeRemaining = 0;
-
     end();
+
+
 }
+
+
 
 void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
 {
