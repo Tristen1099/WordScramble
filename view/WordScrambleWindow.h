@@ -3,7 +3,6 @@
 
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
-#include <FL/Fl_Dial.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Button.H>
 #include <Fl/Fl_Input.H>
@@ -39,12 +38,10 @@ private:
     Fl_Input* wordGuessInput;
     Fl_Text_Buffer* summaryOutputTextBuffer;
     Fl_Text_Display* summaryOutputTextDisplay;
-    Fl_Dial* timer;
 
     vector<Fl_Button*> buttonBoard;
     vector<string*> buttonLetterBoard;
 
-    int timeRemaining;
     int letterCount = 7;
     string userWordInput;
     void addLetterToInput(const char* letter);

@@ -3,6 +3,17 @@
 namespace view
 {
 
+
+static void Timer_CB(void *data)
+{
+static int count = 0;
+printf("Seconds since start: %d\n", ++count);
+
+Fl::repeat_timeout(1, Timer_CB, data);
+
+
+}
+
 WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
     begin();
@@ -13,12 +24,9 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->wordGuessInput = new Fl_Input(230, 250, 200, 25, "Enter Guess Here:");
     this->scoreTitle = new Fl_Box(522,170, 50,50,"~Score~");
     this->currentScore = new Fl_Box(522,195, 50,50,"0");
-    this->timer = new Fl_Dial(512,70,70,70,"0");
     this->summaryOutputTextBuffer = new Fl_Text_Buffer();
     this->summaryOutputTextDisplay = new Fl_Text_Display(105, 70, 390, 150);
 
-    this->timer->type(FL_LINE_DIAL);
-    this->timer->angle1(90);
 
     this->wordGuessInput->deactivate();
 
@@ -38,8 +46,6 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->enterButton->color(buttonColor);
     this->gameTitle->labelcolor(fontColor);
     this->scoreTitle->labelcolor(fontColor);
-    this->timer->labelcolor(fontColor);
-    this->timer->color(backgroundColor);
     this->summaryOutputTextDisplay->color(backgroundColor);
 
     this->gameTitle->labelsize(fontSize);
@@ -47,7 +53,6 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 
     this->gameTitle->labelfont(fontStyle);
     this->scoreTitle->labelfont(fontStyle);
-    this->timer->labelfont(fontStyle);
     this->newGameButton->box(FL_RSHADOW_BOX);
     this->scrambleButton->box(FL_RSHADOW_BOX);
     this->enterButton->box(FL_RSHADOW_BOX);
@@ -60,6 +65,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 
     this->createButtonBoardInline(this->letterCount);
 
+    Fl::add_timeout(.5, Timer_CB);
     end();
 
 
@@ -235,5 +241,7 @@ WordScrambleWindow::~WordScrambleWindow()
         delete this->buttonBoard[i];
     }
 }
+
+
 
 }
