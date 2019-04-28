@@ -58,7 +58,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->buttonLetterBoard = vector<string*>();
     this->buttonBoard = vector<Fl_Button*>();
 
-    this->createButtonBoardInline(this->letterCount);
+    this->instantiateButtonBoardInline(this->letterCount);
 
     end();
 
@@ -72,7 +72,7 @@ void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
     WordScrambleWindow* window = (WordScrambleWindow*)data;
 
     window->begin();
-    window->createButtonBoardInline(window->letterCount);
+    window->instantiateButtonBoardInline(window->letterCount);
     window->wordGuessInput->value("");
     window->end();
 
@@ -95,36 +95,48 @@ void WordScrambleWindow::cbScrambleLetters(Fl_Widget* widget, void* data)
     window->buttonBoard.clear();
     window->wordGuessInput->value("");
 
-    int offset = 0;
+    createButtonBoard(window);
 
+}
+
+void WordScrambleWindow::createButtonBoard(WordScrambleWindow* window)
+{
+    int offset = 0;
     window->begin();
     for (size_t i = 0; i < window->letterCount; i++)
     {
         Fl_Button* letterButton = new Fl_Button(55+offset,300, 40,40,window->buttonLetterBoard[i]->c_str());
         letterButton->callback(cbLetterButtonPressed, window);
-        if(window->letterCount == 5)
-        {
-            offset += 85;
-        }
-        else if(window->letterCount == 6)
-        {
-            offset += 70;
-        }
-        else if (window->letterCount == 7)
-        {
-            offset += 60;
-        }
-
-        window->buttonBoard.push_back(letterButton);
+        offset += getOffsetIncrement(window);
 
         Fl_Color backgroundColor = fl_rgb_color(224,193,255);
         Fl_Color selectionColor = fl_rgb_color(134,113,195);
         letterButton->color(backgroundColor);
         letterButton->selection_color(selectionColor);
         letterButton->box(FL_RSHADOW_BOX);
+
+        window->buttonBoard.push_back(letterButton);
+
     }
     window->end();
+}
 
+int WordScrambleWindow::getOffsetIncrement(WordScrambleWindow* window)
+{
+    int increment;
+    if(window->letterCount == 5)
+    {
+        increment = 85;
+    }
+    else if(window->letterCount == 6)
+    {
+        increment = 70;
+    }
+    else if (window->letterCount == 7)
+    {
+        increment = 60;
+    }
+    return increment;
 }
 
 void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
@@ -154,19 +166,14 @@ void WordScrambleWindow::addLetterToInput(const char* letter)
 
 void WordScrambleWindow::setSummaryText(const string& outputText)
 {
-
     this->summaryOutputTextBuffer->text(outputText.c_str());
 }
 
-inline void WordScrambleWindow::createButtonBoardInline(size_t buttonCount)
+inline void WordScrambleWindow::instantiateButtonBoardInline(size_t buttonCount)
 {
-
-    //WordScrambleWindow* window = (WordScrambleWindow*)data;
     vector<char> randomLetters = RandomLetterGenerator::makeRandomLetterCollection(buttonCount);
 
     int offset = 0;
-
-
 
     for (size_t i = 0; i < this->buttonBoard.size(); i++)
     {
@@ -185,32 +192,7 @@ inline void WordScrambleWindow::createButtonBoardInline(size_t buttonCount)
 
     }
 
-    for (size_t i = 0; i < buttonCount; i++)
-    {
-        Fl_Button* letterButton = new Fl_Button(55+offset,300, 40,40,this->buttonLetterBoard[i]->c_str());
-        letterButton->callback(cbLetterButtonPressed, this);
-        if(this->letterCount == 5)
-        {
-            offset += 85;
-        }
-        else if(this->letterCount == 6)
-        {
-            offset += 70;
-        }
-        else if (this->letterCount == 7)
-        {
-            offset += 60;
-        }
-
-        this->buttonBoard.push_back(letterButton);
-
-        Fl_Color backgroundColor = fl_rgb_color(224,193,255);
-        Fl_Color selectionColor = fl_rgb_color(134,113,195);
-        letterButton->color(backgroundColor);
-        letterButton->selection_color(selectionColor);
-        letterButton->box(FL_RSHADOW_BOX);
-
-    }
+    createButtonBoard(this);
 }
 
 

@@ -29,7 +29,6 @@ class WordScrambleWindow : public Fl_Window
 
 
 private:
-
     Fl_Button* newGameButton;
     Fl_Button* scrambleButton;
     Fl_Button* enterButton;
@@ -52,6 +51,7 @@ private:
 public:
     WordScrambleWindow(int width, int height, const char* title);
     virtual ~WordScrambleWindow();
+
     static void cbStartNewGame(Fl_Widget* widget, void* data);
     static void cbScrambleLetters(Fl_Widget* widget, void* data);
     static void cbEnterWord(Fl_Widget* widget, void* data);
@@ -60,7 +60,10 @@ public:
 
 private:
 
-    inline void createButtonBoardInline(size_t buttonCount);
+    static void createButtonBoard(WordScrambleWindow* window);
+    static int getOffsetIncrement(WordScrambleWindow* window);
+
+    inline void instantiateButtonBoardInline(size_t buttonCount);
 
 };
 
