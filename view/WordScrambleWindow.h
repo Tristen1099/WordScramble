@@ -48,7 +48,7 @@ private:
     vector<Fl_Button*> buttonBoard;
     vector<string*> buttonLetterBoard;
 
-    int letterCount = 7;
+    int letterCount = 5;
     string userWordInput;
     void addLetterToInput(const char* letter);
 
@@ -66,11 +66,6 @@ private:
 
     vector<string> timeGroup = {"1 Minute", "2 Minutes", "3 Minutes"};
     vector<string> letterGroup = {"5 Letters", "6 Letters", "7 Letters"};
-
-    void createAndDisplayTimeRadioButtons();
-    void createAndDisplayLetterRadioButtons();
-
-
 
 
 public:
@@ -97,6 +92,9 @@ private:
     static int getOffsetIncrement(WordScrambleWindow* window);
 
     inline void instantiateButtonBoardInline(size_t buttonCount);
+
+    void createAndDisplayTimeRadioButtons();
+    void createAndDisplayLetterRadioButtons();
 
 };
 

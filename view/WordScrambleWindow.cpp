@@ -22,7 +22,6 @@ void Timer_CB(void *data)
         Fl::remove_timeout(Timer_CB, data);
         window->endGame();
 
-
     }
     window->end();
 
@@ -188,6 +187,8 @@ void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
     Fl::add_timeout(0, Timer_CB, window);
     window->scrambleButton->activate();
     window->enterButton->activate();
+    window->letterRadioGroup->hide();
+    window->timeRadioGroup->hide();
     window->currentTime->show();
 
 
@@ -320,6 +321,8 @@ void WordScrambleWindow::endGame()
         this->buttonBoard[i]->hide();
 
     }
+    this->letterRadioGroup->show();
+    this->timeRadioGroup->show();
 
 }
 
