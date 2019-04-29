@@ -44,13 +44,17 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="model/Dictionary.cpp" />
 		<Unit filename="model/Dictionary.h" />
+		<Unit filename="model/RandomLetterGenerator.cpp" />
+		<Unit filename="model/RandomLetterGenerator.h" />
+		<Unit filename="model/TrieNode.cpp" />
+		<Unit filename="model/TrieNode.h" />
+		<Unit filename="model/TrieTree.cpp" />
+		<Unit filename="model/TrieTree.h" />
 		<Unit filename="other/dictionary.txt" />
 		<Unit filename="other/notes.txt" />
 		<Unit filename="other/test.txt">
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="utilities/RandomLetterGenerator.cpp" />
-		<Unit filename="utilities/RandomLetterGenerator.h" />
 		<Unit filename="utilities/Utils.cpp" />
 		<Unit filename="utilities/Utils.h" />
 		<Unit filename="view/WordScrambleWindow.cpp" />

@@ -3,7 +3,6 @@
 
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
-#include <FL/Fl_Dial.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Button.H>
 #include <Fl/Fl_Input.H>
@@ -14,6 +13,7 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <sstream>
 using namespace std;
 
 
@@ -35,18 +35,19 @@ private:
     Fl_Box* gameTitle;
     Fl_Box* scoreTitle;
     Fl_Box* currentScore;
+    Fl_Box* timeRemainingTitle;
     Fl_Input* wordGuessInput;
     Fl_Text_Buffer* summaryOutputTextBuffer;
     Fl_Text_Display* summaryOutputTextDisplay;
-    Fl_Dial* timer;
+
 
     vector<Fl_Button*> buttonBoard;
     vector<string*> buttonLetterBoard;
 
-    int timeRemaining;
     int letterCount = 7;
     string userWordInput;
     void addLetterToInput(const char* letter);
+
 
 public:
     WordScrambleWindow(int width, int height, const char* title);
@@ -57,6 +58,8 @@ public:
     static void cbEnterWord(Fl_Widget* widget, void* data);
     static void cbLetterButtonPressed(Fl_Widget* widget, void* data);
     void setSummaryText(const string& outputText);
+    int secondsRemaining;
+    Fl_Box* currentTime;
 
 private:
 
