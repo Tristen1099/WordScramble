@@ -33,6 +33,7 @@ class WordScrambleWindow : public Fl_Window
 private:
 
     Fl_Button* newGameButton;
+    Fl_Button* resetButton;
     Fl_Button* scrambleButton;
     Fl_Button* enterButton;
     Fl_Box* gameTitle;
@@ -79,6 +80,7 @@ public:
     Fl_Box* currentTime;
 
     static void cbStartNewGame(Fl_Widget* widget, void* data);
+    static void cbResetGame(Fl_Widget* widget, void* data);
     static void cbScrambleLetters(Fl_Widget* widget, void* data);
     static void cbEnterWord(Fl_Widget* widget, void* data);
     static void cbLetterButtonPressed(Fl_Widget* widget, void* data);
