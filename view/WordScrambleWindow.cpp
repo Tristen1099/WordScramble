@@ -7,18 +7,18 @@ namespace view
 void Timer_CB(void *data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
-    window->secondsRemaining--;
+    window->decreaseSecondsRemaining();
     window->begin();
-    if(window->secondsRemaining > 0)
+    if(window->getSecondsRemaining() > 0)
     {
-        *window->strSecondsRemaining = to_string(window->secondsRemaining);
-        window->currentTime->label(window->strSecondsRemaining->c_str());
+        window->setTimeString(to_string(window->getSecondsRemaining()));
+        window->updateCurrentTimeLabel();
         Fl::repeat_timeout(1, Timer_CB, data);
     }
     else
     {
-        *window->strSecondsRemaining = "Times Up!";
-        window->currentTime->label(window->strSecondsRemaining->c_str());
+        window->setTimeString("Times Up!");
+        window->updateCurrentTimeLabel();
         Fl::remove_timeout(Timer_CB, data);
 
     }
@@ -35,8 +35,8 @@ begin();
     this->gameTitle = new Fl_Box(270,8, 50,50,"~The Word Scrambler~");
     this->wordGuessInput = new Fl_Input(230, 250, 200, 25, "Enter Guess Here:");
     this->scoreTitle = new Fl_Box(522,170, 50,50,"~Score~");
-
-    this->strSecondsRemaining = new string(to_string(this->secondsRemaining));
+    this->secondsRemaining = DEFAULT_START_TIME;
+    this->strSecondsRemaining = new string("0");
 
     this->currentScore = new Fl_Box(522,195, 50,50,"0");
     this->timeRemainingTitle = new Fl_Box(521,70, 50,50," ~Time~ \n ~Remaining~");
@@ -90,6 +90,34 @@ begin();
 
 }
 
+void WordScrambleWindow::updateCurrentTimeLabel()
+{
+    this->currentTime->label(this->getTimeString()->c_str());
+}
+
+string* WordScrambleWindow::getTimeString()
+{
+    return this->strSecondsRemaining;
+}
+
+void WordScrambleWindow::setTimeString(string time)
+{
+    *this->strSecondsRemaining = time;
+}
+
+void WordScrambleWindow::decreaseSecondsRemaining()
+{
+    this->secondsRemaining--;
+}
+void WordScrambleWindow::resetSecondsRemaining()
+{
+    this->secondsRemaining = DEFAULT_START_TIME;
+}
+int WordScrambleWindow::getSecondsRemaining()
+{
+    return this->secondsRemaining;
+}
+
 
 void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
 {
@@ -99,7 +127,7 @@ void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
     window->instantiateButtonBoardInline(window->letterCount);
     window->wordGuessInput->value("");
     window->end();
-    window->secondsRemaining = 11;
+    window->secondsRemaining = DEFAULT_START_TIME;
     Fl::add_timeout(0, Timer_CB, window);
     window->scrambleButton->activate();
     window->enterButton->activate();
