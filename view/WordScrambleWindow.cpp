@@ -11,7 +11,7 @@ void Timer_CB(void *data)
     window->begin();
     if(window->getSecondsRemaining() > 0)
     {
-        window->setTimeString(to_string(window->getSecondsRemaining()));
+        window->setTimeString(to_string(window->getSecondsRemaining()) + "\n second(s)");
         window->updateCurrentTimeLabel();
         Fl::repeat_timeout(1, Timer_CB, data);
     }
