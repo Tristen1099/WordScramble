@@ -8,7 +8,7 @@
 #include <iostream>
 using namespace std;
 
-
+static const int ALPHABET_SIZE = 26;
 
 string removeWhitespaces(string str);
 

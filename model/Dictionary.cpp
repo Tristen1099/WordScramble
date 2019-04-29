@@ -67,32 +67,6 @@ bool Dictionary::validWord(const string& word, vector<char> letters)
     }
     return valid;
 
-
-
-
-
-
-
-    /*
-    bool containsEach = true;
-    size_t totalMatches = 0;
-    for (size_t i = 0; i < word.size(); i++)
-    {
-        char currentWordLetter = word.at(i);
-        bool validLetter = (find(letters.begin(), letters.end(), currentWordLetter) != letters.end());
-
-
-        if (!validLetter)
-        {
-            cout << "Invalid: " << word << endl;
-            containsEach = false;
-            break;
-        }
-
-    }
-    */
-
-
 }
 
 }

@@ -34,15 +34,19 @@
 	<ctime>
 	<iostream>
 
-1555794271 source:/home/csuser/GroupCWordScramble/main.cpp
+1556496747 source:/home/csuser/GroupCWordScramble/main.cpp
 	"view/WordScrambleWindow.h"
 	"DictionaryFileReader.h"
 	"../model/RandomLetterGenerator.h"
+	"../model/TrieNode.h"
+	"../model/TrieTree.h"
 	"iostream"
+	<string>
 
-1555793422 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
+1556387723 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
+	<FL/Fl_Dial.H>
 	<FL/Fl_Box.H>
 	<FL/Fl_Button.H>
 	<Fl/Fl_Input.H>
@@ -50,6 +54,7 @@
 	<FL/Fl_Text_Display.H>
 	<vector>
 	<iostream>
+	<algorithm>
 	"../model/RandomLetterGenerator.h"
 
 1555641623 /home/csuser/GroupCWordScramble/utilities/GetRandomLetter.h
@@ -58,7 +63,7 @@
 	<ctime>
 	<iostream>
 
-1555794168 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
+1556387753 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
 1555641991 source:/home/csuser/GroupCWordScramble/utilities/GetRandomLetter.cpp
@@ -75,7 +80,7 @@
 
 1555731388 D
 
-1555791449 source:/home/csuser/GroupCWordScramble/fileio/DictionaryFileReader.cpp
+1556343874 source:/home/csuser/GroupCWordScramble/fileio/DictionaryFileReader.cpp
 	"DictionaryFileReader.h"
 
 1555790830 /home/csuser/GroupCWordScramble/fileio/DictionaryFileReader.h
@@ -96,16 +101,16 @@
 1555781793 source:/home/csuser/GroupCWordScramble/model/WordCollection.cpp
 	"WordCollection.h"
 
-1555782971 /home/csuser/GroupCWordScramble/utilities/Utils.h
+1556495335 /home/csuser/GroupCWordScramble/utilities/Utils.h
 	<string>
 	<cctype>
 	<algorithm>
 	<iostream>
 
-1555782980 source:/home/csuser/GroupCWordScramble/utilities/Utils.cpp
+1556343874 source:/home/csuser/GroupCWordScramble/utilities/Utils.cpp
 	"Utils.h"
 
-1555783298 source:/home/csuser/GroupCWordScramble/model/Dictionary.cpp
+1556387984 source:/home/csuser/GroupCWordScramble/model/Dictionary.cpp
 	"Dictionary.h"
 
 1555783330 /home/csuser/GroupCWordScramble/model/Dictionary.h
@@ -234,4 +239,23 @@
 
 1555984649 source:/home/csuser/Desktop/GroupCWordScramble/model/RandomLetterGenerator.cpp
 	"RandomLetterGenerator.h"
+
+1556389575 source:/home/csuser/GroupCWordScramble/model/TernarySearchTree.cpp
+	"TernarySearchTree.h"
+	<bits/stdc++.h>
+
+1556388045 /home/csuser/GroupCWordScramble/model/TernarySearchTree.h
+
+1556498340 /home/csuser/GroupCWordScramble/model/TrieNode.h
+	"../utilities/Utils.h"
+
+1556498402 source:/home/csuser/GroupCWordScramble/model/TrieNode.cpp
+	"TrieNode.h"
+
+1556498391 source:/home/csuser/GroupCWordScramble/model/TrieTree.cpp
+	"TrieTree.h"
+
+1556496475 /home/csuser/GroupCWordScramble/model/TrieTree.h
+	"../model/TrieNode.h"
+	<bits/stdc++.h>
 
