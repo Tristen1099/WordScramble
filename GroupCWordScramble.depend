@@ -37,7 +37,7 @@
 1556498530 source:/home/csuser/GroupCWordScramble/main.cpp
 	"view/WordScrambleWindow.h"
 
-1556498701 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
+1556506611 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
@@ -49,6 +49,7 @@
 	<iostream>
 	<algorithm>
 	<sstream>
+	<string>
 	"../model/RandomLetterGenerator.h"
 
 1555641623 /home/csuser/GroupCWordScramble/utilities/GetRandomLetter.h
@@ -240,7 +241,7 @@
 
 1556388045 /home/csuser/GroupCWordScramble/model/TernarySearchTree.h
 
-1556498340 /home/csuser/GroupCWordScramble/model/TrieNode.h
+1556499906 /home/csuser/GroupCWordScramble/model/TrieNode.h
 	"../utilities/Utils.h"
 
 1556498402 source:/home/csuser/GroupCWordScramble/model/TrieNode.cpp

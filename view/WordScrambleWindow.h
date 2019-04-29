@@ -14,6 +14,7 @@
 #include <iostream>
 #include <algorithm>
 #include <sstream>
+#include <string>
 using namespace std;
 
 
@@ -27,6 +28,10 @@ namespace view
 class WordScrambleWindow : public Fl_Window
 {
 
+public:
+    int secondsRemaining;
+    string* strSecondsRemaining;
+    Fl_Box* currentTime;
 
 private:
     Fl_Button* newGameButton;
@@ -49,6 +54,8 @@ private:
     void addLetterToInput(const char* letter);
 
 
+
+
 public:
     WordScrambleWindow(int width, int height, const char* title);
     virtual ~WordScrambleWindow();
@@ -58,8 +65,6 @@ public:
     static void cbEnterWord(Fl_Widget* widget, void* data);
     static void cbLetterButtonPressed(Fl_Widget* widget, void* data);
     void setSummaryText(const string& outputText);
-    int secondsRemaining;
-    Fl_Box* currentTime;
 
 private:
 
