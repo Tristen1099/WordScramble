@@ -31,7 +31,6 @@ class WordScrambleWindow : public Fl_Window
 {
 
 private:
-    static const int DEFAULT_START_TIME = 21;
 
     Fl_Button* newGameButton;
     Fl_Button* scrambleButton;
@@ -48,13 +47,12 @@ private:
     vector<Fl_Button*> buttonBoard;
     vector<string*> buttonLetterBoard;
 
-    int letterCount = 5;
+    int letterCount;
     string userWordInput;
     void addLetterToInput(const char* letter);
 
     int secondsRemaining;
     string* strSecondsRemaining;
-    Fl_Box* currentTime;
 
     Fl_Output* timeOutputLabel;
     Fl_Group* timeRadioGroup;
@@ -69,15 +67,16 @@ private:
 
 
 public:
+
     WordScrambleWindow(int width, int height, const char* title);
     virtual ~WordScrambleWindow();
 
     string* getTimeString();
     void setTimeString(string time);
     void decreaseSecondsRemaining();
-    void resetSecondsRemaining();
     void updateCurrentTimeLabel();
     int getSecondsRemaining();
+    Fl_Box* currentTime;
 
     static void cbStartNewGame(Fl_Widget* widget, void* data);
     static void cbScrambleLetters(Fl_Widget* widget, void* data);
@@ -95,6 +94,8 @@ private:
 
     void createAndDisplayTimeRadioButtons();
     void createAndDisplayLetterRadioButtons();
+
+    void setValuesForLetterAndTimeSpecs();
 
 };
 

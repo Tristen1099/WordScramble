@@ -9,14 +9,23 @@ void Timer_CB(void *data)
     WordScrambleWindow* window = (WordScrambleWindow*)data;
     window->decreaseSecondsRemaining();
     window->begin();
-    if(window->getSecondsRemaining() > 0)
+    if(window->getSecondsRemaining() > 10)
     {
+        window->currentTime->labelcolor(FL_BLACK);
+        window->setTimeString(to_string(window->getSecondsRemaining()) + "\n second(s)");
+        window->updateCurrentTimeLabel();
+        Fl::repeat_timeout(1, Timer_CB, data);
+    }
+    else if(window->getSecondsRemaining() > 0)
+    {
+        window->currentTime->labelcolor(FL_RED);
         window->setTimeString(to_string(window->getSecondsRemaining()) + "\n second(s)");
         window->updateCurrentTimeLabel();
         Fl::repeat_timeout(1, Timer_CB, data);
     }
     else
     {
+        window->currentTime->labelcolor(FL_BLACK);
         window->setTimeString("Times Up!");
         window->updateCurrentTimeLabel();
         Fl::remove_timeout(Timer_CB, data);
@@ -33,21 +42,19 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->newGameButton = new Fl_Button(8, 70, 90, 30, "New Game");
     this->scrambleButton = new Fl_Button(470, 296, 80, 50, "Scramble");
     this->enterButton = new Fl_Button(440, 248, 60, 30, "Enter");
+
     this->gameTitle = new Fl_Box(270,8, 50,50,"~The Word Scrambler~");
     this->wordGuessInput = new Fl_Input(230, 250, 200, 25, "Enter Guess Here:");
-    this->scoreTitle = new Fl_Box(522,170, 50,50,"~Score~");
-    this->secondsRemaining = DEFAULT_START_TIME;
-    this->strSecondsRemaining = new string("0");
 
+    this->scoreTitle = new Fl_Box(522,170, 50,50,"~Score~");
+    this->strSecondsRemaining = new string("0");
     this->currentScore = new Fl_Box(522,195, 50,50,"0");
+
     this->timeRemainingTitle = new Fl_Box(521,70, 50,50," ~Time~ \n ~Remaining~");
-    this->currentTime = new Fl_Box(512,105, 70,50,this->strSecondsRemaining->c_str());
+    this->currentTime = new Fl_Box(512,112, 70,50,this->strSecondsRemaining->c_str());
 
     this->summaryOutputTextBuffer = new Fl_Text_Buffer();
     this->summaryOutputTextDisplay = new Fl_Text_Display(105, 70, 390, 150);
-
-
-    this->wordGuessInput->deactivate();
 
     this->newGameButton->callback(cbStartNewGame, this);
     this->scrambleButton->callback(cbScrambleLetters, this);
@@ -56,10 +63,10 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     Fl_Fontsize fontSize = 40;
     Fl_Fontsize scoreFontSize = 20;
     Fl_Font fontStyle = 10;
+
     Fl_Color fontColor = fl_rgb_color(195,118,0);
     Fl_Color backgroundColor = fl_rgb_color(224,193,255);
     Fl_Color buttonColor = fl_rgb_color(204,153,0);
-
     this->newGameButton->color(buttonColor);
     this->scrambleButton->color(buttonColor);
     this->enterButton->color(buttonColor);
@@ -68,33 +75,31 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->timeRemainingTitle->labelcolor(fontColor);
     this->summaryOutputTextDisplay->color(backgroundColor);
 
-    this->gameTitle->labelsize(fontSize);
-    this->scoreTitle->labelsize(scoreFontSize);
-
-    this->gameTitle->labelfont(fontStyle);
-    this->scoreTitle->labelfont(fontStyle);
-    this->newGameButton->box(FL_RSHADOW_BOX);
-    this->scrambleButton->box(FL_RSHADOW_BOX);
-    this->enterButton->box(FL_RSHADOW_BOX);
-
     this->summaryOutputTextDisplay->textfont(FL_COURIER);
     this->summaryOutputTextDisplay->buffer(summaryOutputTextBuffer);
 
     this->buttonLetterBoard = vector<string*>();
     this->buttonBoard = vector<Fl_Button*>();
 
+    this->wordGuessInput->deactivate();
     this->scrambleButton->deactivate();
     this->enterButton->deactivate();
     this->currentTime->hide();
 
     this->createAndDisplayLetterRadioButtons();
     this->createAndDisplayTimeRadioButtons();
+
+    this->gameTitle->labelfont(fontStyle);
+    this->scoreTitle->labelfont(fontStyle);
+    this->gameTitle->labelsize(fontSize);
+    this->scoreTitle->labelsize(scoreFontSize);
+    this->newGameButton->box(FL_RSHADOW_BOX);
+    this->scrambleButton->box(FL_RSHADOW_BOX);
+    this->enterButton->box(FL_RSHADOW_BOX);
     this->timeRadioGroup->box(FL_SHADOW_BOX);
     this->letterRadioGroup->box(FL_SHADOW_BOX);
 
-
     end();
-
 
 }
 
@@ -108,7 +113,6 @@ void WordScrambleWindow::createAndDisplayTimeRadioButtons()
     this->timeRadioGroup = new Fl_Group(X_RADIO_GROUP, Y_RADIO_GROUP, WIDTH_RADIO_GROUP, HEIGHT_RADIO_GROUP);
 
     this->timeRadioGroup->begin();
-
 
     for (int j = 0; j<3; j++)
     {
@@ -165,10 +169,6 @@ void WordScrambleWindow::decreaseSecondsRemaining()
 {
     this->secondsRemaining--;
 }
-void WordScrambleWindow::resetSecondsRemaining()
-{
-    this->secondsRemaining = DEFAULT_START_TIME;
-}
 int WordScrambleWindow::getSecondsRemaining()
 {
     return this->secondsRemaining;
@@ -180,16 +180,16 @@ void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
     WordScrambleWindow* window = (WordScrambleWindow*)data;
     Fl::remove_timeout(Timer_CB, window);
     window->begin();
-    window->instantiateButtonBoardInline(window->letterCount);
     window->wordGuessInput->value("");
-    window->end();
-    window->secondsRemaining = DEFAULT_START_TIME;
+    window->setValuesForLetterAndTimeSpecs();
     Fl::add_timeout(0, Timer_CB, window);
     window->scrambleButton->activate();
     window->enterButton->activate();
     window->letterRadioGroup->hide();
     window->timeRadioGroup->hide();
     window->currentTime->show();
+    window->instantiateButtonBoardInline(window->letterCount);
+    window->end();
 
 
 }
@@ -258,6 +258,9 @@ int WordScrambleWindow::getOffsetIncrement(WordScrambleWindow* window)
 void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
 {
     cout<<"TEST Enter"<<endl;
+    WordScrambleWindow* window = (WordScrambleWindow*)data;
+    window->wordGuessInput->value("");
+
 }
 
 void WordScrambleWindow::cbLetterButtonPressed(Fl_Widget* widget, void* data)
@@ -326,6 +329,38 @@ void WordScrambleWindow::endGame()
 
 }
 
+void WordScrambleWindow::setValuesForLetterAndTimeSpecs()
+{
+
+    if(this->timeRadioGroupButton[0]->value() == 1)
+    {
+        this->secondsRemaining = 61;
+    }
+    else if(this->timeRadioGroupButton[1]->value() == 1)
+    {
+        this->secondsRemaining = 121;
+    }
+    else
+    {
+        this->secondsRemaining = 181;
+    }
+
+
+    if(this->letterRadioGroupButton[0]->value() == 1)
+    {
+        this->letterCount = 5;
+    }
+    else if(this->letterRadioGroupButton[1]->value() == 1)
+    {
+        this->letterCount = 6;
+    }
+    else
+    {
+        this->letterCount = 7;
+    }
+
+}
+
 
 WordScrambleWindow::~WordScrambleWindow()
 {
@@ -339,6 +374,7 @@ WordScrambleWindow::~WordScrambleWindow()
     delete this->scoreTitle;
     delete this->currentScore;
     delete this->strSecondsRemaining;
+    delete this->wordGuessInput;
 
     for (size_t i = 0; i < this->buttonLetterBoard.size(); i++)
     {
