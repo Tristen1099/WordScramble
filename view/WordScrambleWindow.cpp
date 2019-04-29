@@ -88,10 +88,63 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->enterButton->deactivate();
     this->currentTime->hide();
 
+    this->createAndDisplayLetterRadioButtons();
+    this->createAndDisplayTimeRadioButtons();
+    this->timeRadioGroup->box(FL_SHADOW_BOX);
+    this->letterRadioGroup->box(FL_SHADOW_BOX);
+
 
     end();
 
 
+}
+
+void WordScrambleWindow::createAndDisplayTimeRadioButtons()
+{
+    const int X_RADIO_GROUP = 7;
+    const int Y_RADIO_GROUP = 106;
+    const int WIDTH_RADIO_GROUP = 95;
+    const int HEIGHT_RADIO_GROUP = 60;
+
+    this->timeRadioGroup = new Fl_Group(X_RADIO_GROUP, Y_RADIO_GROUP, WIDTH_RADIO_GROUP, HEIGHT_RADIO_GROUP);
+
+    this->timeRadioGroup->begin();
+
+
+    for (int j = 0; j<3; j++)
+    {
+        string label = this->timeGroup[j];
+        this->timeRadioGroupButton[j] = new Fl_Round_Button(X_RADIO_GROUP, Y_RADIO_GROUP + 3 + j*20, 12, 12, label.c_str());
+        this->timeRadioGroupButton[j]->type(FL_RADIO_BUTTON);
+    }
+
+    this->timeRadioGroup->end();
+
+    this->timeRadioGroupButton[1]->set();
+}
+
+void WordScrambleWindow::createAndDisplayLetterRadioButtons()
+{
+    const int X_RADIO_GROUP = 7;
+    const int Y_RADIO_GROUP = 170;
+    const int WIDTH_RADIO_GROUP = 95;
+    const int HEIGHT_RADIO_GROUP = 60;
+
+    this->letterRadioGroup = new Fl_Group(X_RADIO_GROUP, Y_RADIO_GROUP, WIDTH_RADIO_GROUP, HEIGHT_RADIO_GROUP);
+
+    this->letterRadioGroup->begin();
+
+
+    for (int j = 0; j<3; j++)
+    {
+        string label = this->letterGroup[j];
+        this->letterRadioGroupButton[j] = new Fl_Round_Button(X_RADIO_GROUP, Y_RADIO_GROUP + 3 + j*20, 12, 12, label.c_str());
+        this->letterRadioGroupButton[j]->type(FL_RADIO_BUTTON);
+    }
+
+    this->letterRadioGroup->end();
+
+    this->letterRadioGroupButton[1]->set();
 }
 
 void WordScrambleWindow::updateCurrentTimeLabel()
