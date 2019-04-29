@@ -73,6 +73,7 @@ public:
     static void cbEnterWord(Fl_Widget* widget, void* data);
     static void cbLetterButtonPressed(Fl_Widget* widget, void* data);
     void setSummaryText(const string& outputText);
+    void endGame();
 
 private:
 

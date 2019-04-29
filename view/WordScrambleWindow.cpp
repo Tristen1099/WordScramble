@@ -20,6 +20,8 @@ void Timer_CB(void *data)
         window->setTimeString("Times Up!");
         window->updateCurrentTimeLabel();
         Fl::remove_timeout(Timer_CB, data);
+        window->endGame();
+
 
     }
     window->end();
@@ -28,7 +30,7 @@ void Timer_CB(void *data)
 
 WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
-begin();
+    begin();
     this->newGameButton = new Fl_Button(8, 70, 90, 30, "New Game");
     this->scrambleButton = new Fl_Button(470, 296, 80, 50, "Scramble");
     this->enterButton = new Fl_Button(440, 248, 60, 30, "Enter");
@@ -64,6 +66,7 @@ begin();
     this->enterButton->color(buttonColor);
     this->gameTitle->labelcolor(fontColor);
     this->scoreTitle->labelcolor(fontColor);
+    this->timeRemainingTitle->labelcolor(fontColor);
     this->summaryOutputTextDisplay->color(backgroundColor);
 
     this->gameTitle->labelsize(fontSize);
@@ -83,6 +86,7 @@ begin();
 
     this->scrambleButton->deactivate();
     this->enterButton->deactivate();
+    this->currentTime->hide();
 
 
     end();
@@ -131,6 +135,7 @@ void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
     Fl::add_timeout(0, Timer_CB, window);
     window->scrambleButton->activate();
     window->enterButton->activate();
+    window->currentTime->show();
 
 
 }
@@ -250,6 +255,19 @@ inline void WordScrambleWindow::instantiateButtonBoardInline(size_t buttonCount)
     }
 
     createButtonBoard(this);
+}
+
+
+void WordScrambleWindow::endGame()
+{
+    this->scrambleButton->deactivate();
+    this->enterButton->deactivate();
+    for (size_t i = 0; i < this->buttonBoard.size(); i++)
+    {
+        this->buttonBoard[i]->hide();
+
+    }
+
 }
 
 
