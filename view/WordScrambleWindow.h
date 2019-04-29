@@ -32,6 +32,7 @@ public:
     int secondsRemaining;
     string* strSecondsRemaining;
     Fl_Box* currentTime;
+    void endGame();
 
 private:
     Fl_Button* newGameButton;
