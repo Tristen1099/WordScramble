@@ -201,8 +201,8 @@ void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
 
 void WordScrambleWindow::cbResetGame(Fl_Widget* widget, void* data)
 {
-          WordScrambleWindow* window = (WordScrambleWindow*)data;
-          window->endGame();
+    WordScrambleWindow* window = (WordScrambleWindow*)data;
+    window->endGame();
 
 }
 
