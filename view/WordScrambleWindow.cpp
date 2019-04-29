@@ -81,7 +81,8 @@ begin();
     this->buttonLetterBoard = vector<string*>();
     this->buttonBoard = vector<Fl_Button*>();
 
-    this->instantiateButtonBoardInline(this->letterCount);
+    this->scrambleButton->deactivate();
+    this->enterButton->deactivate();
 
 
     end();
@@ -100,6 +101,9 @@ void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
     window->end();
     window->secondsRemaining = 11;
     Fl::add_timeout(0, Timer_CB, window);
+    window->scrambleButton->activate();
+    window->enterButton->activate();
+
 
 }
 
