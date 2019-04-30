@@ -1,5 +1,8 @@
 #include "Dictionary.h"
 
+#include <iostream>
+using namespace std;
+
 namespace model
 {
 
@@ -27,12 +30,13 @@ void Dictionary::setCollection(vector<string> newCollection)
 vector<string>* Dictionary::findAllWordsContaining(vector<char> letters)
 {
     vector<string>* validWords = new vector<string>();
-    int letterCount = letters.size();
+    size_t letterCount = letters.size();
     char* charLetters = new char[letterCount];
     copy(letters.begin(), letters.end(), charLetters);
-    //char* charLetters = "test";
+
 
     this->wordTree.findAllWordsUsing(charLetters, letterCount, validWords);
+    delete charLetters;
     sort( validWords->begin(), validWords->end() );
     validWords->erase( unique( validWords->begin(), validWords->end() ), validWords->end() );
     /*
@@ -69,7 +73,6 @@ bool Dictionary::validWord(const string& word, vector<char> letters)
                 break;
             }
         }
-
 
 
         if (!validLetter)

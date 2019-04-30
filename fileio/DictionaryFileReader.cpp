@@ -19,6 +19,7 @@ Dictionary* DictionaryFileReader::readFileToDictionary()
     string line;
     ifstream infile(this->filename);
     vector<string> words;
+
     while (getline(infile, line))
     {
         string cleanLine = removeWhitespaces(line);

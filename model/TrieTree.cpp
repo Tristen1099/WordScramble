@@ -63,8 +63,14 @@ void TrieTree::findAllWordsUsing(char* letters, int letterCount, vector<string>*
 
 void TrieTree::findAllWordsUsing(char* letters, int letterCount, string* previous, vector<string>* result, TrieNode* root)
 {
+
+
     TrieNode* pCrawl = root;
-    char* changingLetters = letters;
+    char* changingLetters = new char[letterCount];
+    for (int i = 0; i < letterCount; i++)
+    {
+        changingLetters[i] = letters[i];
+    }
     for (size_t i = 0; i < letterCount; i++)
     {
         char currentLetter = changingLetters[0];
@@ -83,25 +89,33 @@ void TrieTree::findAllWordsUsing(char* letters, int letterCount, string* previou
             {
                 char* nextLevelLetters = createWithoutFirstLetter(changingLetters, letterCount);
                 this->findAllWordsUsing(nextLevelLetters, letterCount-1, previous, result, child);
+                delete nextLevelLetters;
             }
             previous->pop_back();
         }
 
         changingLetters = this->createShiftedLetters(changingLetters, letterCount);
     }
+    delete changingLetters;
 
 
-    /*
+
+
+/*
     TrieNode* pCrawl = root;
-    char* changingLetters = letters;
+    char* changingLetters = new char[letterCount];
+    for (int i = 0; i < letterCount; i++)
+    {
+        changingLetters[i] = letters[i];
+    }
+
     for (size_t i = 0; i < letterCount; i++)
     {
 
         char currentLetter = changingLetters[0];
         int childIndex = currentLetter - 'a';
-        if (letterCount == 3)
-            cout << "Checking letter at index " << i << " " << currentLetter << " from collection " << changingLetters << endl;
-        //cout << "Child index = " << childIndex << endl;
+        cout << "Checking letter at index " << i << " " << currentLetter << " from collection " << changingLetters << endl;
+
 
         TrieNode* child = pCrawl->childAt(childIndex);
 
@@ -120,6 +134,9 @@ void TrieTree::findAllWordsUsing(char* letters, int letterCount, string* previou
                 char* nextLevelLetters = createWithoutFirstLetter(changingLetters, letterCount);
                 cout << "Step into " << currentLetter << endl;
                 this->findAllWordsUsing(nextLevelLetters, letterCount-1, previous, result, child);
+                cout << "delete nextLevel" << endl;
+                delete nextLevelLetters;
+                cout << "end nextLevel" << endl;
             }
             previous->pop_back();
 
@@ -132,8 +149,10 @@ void TrieTree::findAllWordsUsing(char* letters, int letterCount, string* previou
 
         changingLetters = this->createShiftedLetters(changingLetters, letterCount);
     }
+    delete changingLetters;
     cout << "Step out" << endl;
     */
+
 }
 
 char* TrieTree::createShiftedLetters(char* letters, int letterCount)
@@ -145,6 +164,7 @@ char* TrieTree::createShiftedLetters(char* letters, int letterCount)
         newLetters[i] = letters[i-1];
     }
     newLetters[0] = letters[letterCount - 1];
+    delete letters;
 
     return newLetters;
 }
