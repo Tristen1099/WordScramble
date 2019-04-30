@@ -405,7 +405,6 @@ inline void WordScrambleWindow::instantiateButtonBoardInline(size_t buttonCount)
     for (size_t i = 0; i < buttonCount; i++)
     {
         this->buttonLetterBoard.push_back(new string(1,randomLetters[i]));
-
     }
 
     createButtonBoard(this);

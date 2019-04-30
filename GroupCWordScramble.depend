@@ -64,7 +64,7 @@
 	<ctime>
 	<iostream>
 
-1556605738 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
+1556608103 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
 1555641991 source:/home/csuser/GroupCWordScramble/utilities/GetRandomLetter.cpp
@@ -285,4 +285,14 @@
 1556514653 /home/csuser/Desktop/GroupCWordScramble/model/TrieTree.h
 	"../model/TrieNode.h"
 	<bits/stdc++.h>
+
+1556608091 source:/home/csuser/GroupCWordScramble/view/WordDisplayFormatter.cpp
+	"WordDisplayFormatter.h"
+
+1556608051 /home/csuser/GroupCWordScramble/view/WordDisplayFormatter.h
+	<vector>
+	<string>
+	<sstream>
+	<iomanip>
+	<algorithm>
 
