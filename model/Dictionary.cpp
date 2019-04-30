@@ -57,7 +57,6 @@ bool Dictionary::validWord(const string& word, vector<char> letters)
         }
 
 
-
         if (!validLetter)
         {
             valid = false;

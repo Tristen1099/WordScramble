@@ -2,7 +2,7 @@
 1556514653 source:/home/csuser/Desktop/GroupCWordScramble/main.cpp
 	"view/WordScrambleWindow.h"
 
-1556592210 /home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.h
+1556598012 /home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
@@ -18,8 +18,10 @@
 	<sstream>
 	<string>
 	"../model/RandomLetterGenerator.h"
+	"../model/Dictionary.h"
+	"../fileio/DictionaryFileReader.h"
 
-1556592105 source:/home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.cpp
+1556598879 source:/home/csuser/Desktop/GroupCWordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
 1555539783 source:/home/csuser/Downloads/GroupCWordScramble.4/main.cpp
@@ -196,7 +198,7 @@
 1555962395 source:/home/csuser/Downloads/GroupCWordScramble/model/RandomLetterGenerator.cpp
 	"RandomLetterGenerator.h"
 
-1556514653 source:/home/csuser/Desktop/GroupCWordScramble/fileio/DictionaryFileReader.cpp
+1556596683 source:/home/csuser/Desktop/GroupCWordScramble/fileio/DictionaryFileReader.cpp
 	"DictionaryFileReader.h"
 
 1556514653 /home/csuser/Desktop/GroupCWordScramble/fileio/DictionaryFileReader.h
@@ -208,7 +210,7 @@
 	<algorithm>
 	<cctype>
 
-1556514653 /home/csuser/Desktop/GroupCWordScramble/model/Dictionary.h
+1556597791 /home/csuser/Desktop/GroupCWordScramble/model/Dictionary.h
 	<vector>
 	<string>
 	<iostream>
@@ -226,7 +228,7 @@
 	<stdexcept>
 	<map>
 
-1556514653 source:/home/csuser/Desktop/GroupCWordScramble/model/Dictionary.cpp
+1556598879 source:/home/csuser/Desktop/GroupCWordScramble/model/Dictionary.cpp
 	"Dictionary.h"
 
 1556514653 source:/home/csuser/Desktop/GroupCWordScramble/utilities/Utils.cpp

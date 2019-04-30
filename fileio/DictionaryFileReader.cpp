@@ -21,9 +21,12 @@ Dictionary* DictionaryFileReader::readFileToDictionary()
     string line;
     ifstream infile(this->filename);
     vector<string> words;
+
+
     while (getline(infile, line))
     {
         words.push_back(removeWhitespaces(line));
+
     }
 
     return new Dictionary(words);

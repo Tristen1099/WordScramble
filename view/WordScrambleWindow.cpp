@@ -93,6 +93,8 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->wordGuessInput->deactivate();
     this->scrambleButton->deactivate();
     this->enterButton->deactivate();
+    this->removeLetterButton->deactivate();
+    this->clearLettersButton->deactivate();
     this->currentTime->hide();
     this->previousLetter = nullptr;
 
@@ -111,6 +113,10 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->letterRadioGroup->box(FL_SHADOW_BOX);
     this->removeLetterButton->box(FL_RSHADOW_BOX);
     this->clearLettersButton->box(FL_RSHADOW_BOX);
+
+    DictionaryFileReader* reader = new DictionaryFileReader("other/dictionary.txt");
+    this->dictionary = reader->readFileToDictionary();
+
 
     end();
 
@@ -192,6 +198,7 @@ void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
     Fl::remove_timeout(Timer_CB, window);
+
     window->begin();
     window->wordGuessInput->value("");
     window->setValuesForLetterAndTimeSpecs();
@@ -203,7 +210,20 @@ void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
     window->currentTime->show();
     window->instantiateButtonBoardInline(window->letterCount);
     window->resetButton->show();
+    window->removeLetterButton->activate();
+    window->clearLettersButton->activate();
     window->end();
+
+    std::vector<char> vaildLetters(window->buttonLetterBoard.size());
+    for (int i=0; i<window->buttonLetterBoard.size(); i++)
+    {
+        string *letter;
+        letter = window->buttonLetterBoard[i];
+
+        vaildLetters.push_back(letter->at(0));
+    }
+
+    window->allValidWords = window->dictionary->findAllWordsContaining(vaildLetters);
 
 
 }
@@ -312,10 +332,34 @@ int WordScrambleWindow::getOffsetIncrement(WordScrambleWindow* window)
 
 void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
 {
-    cout<<"TEST Enter"<<endl;
     WordScrambleWindow* window = (WordScrambleWindow*)data;
-    window->wordGuessInput->value("");
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    window->wordGuessInput->value("");
 }
 
 void WordScrambleWindow::cbLetterButtonPressed(Fl_Widget* widget, void* data)
@@ -382,6 +426,8 @@ void WordScrambleWindow::endGame()
     this->timeRadioGroup->show();
     this->resetButton->hide();
     this->currentTime->hide();
+    this->removeLetterButton->deactivate();
+    this->clearLettersButton->deactivate();
 
 }
 
@@ -432,6 +478,8 @@ WordScrambleWindow::~WordScrambleWindow()
     delete this->currentScore;
     delete this->strSecondsRemaining;
     delete this->wordGuessInput;
+    delete this->clearLettersButton;
+    delete this->removeLetterButton;
 
     for (size_t i = 0; i < this->buttonLetterBoard.size(); i++)
     {

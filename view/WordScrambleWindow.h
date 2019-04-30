@@ -21,7 +21,11 @@ using namespace std;
 
 
 #include "../model/RandomLetterGenerator.h"
+#include "../model/Dictionary.h"
 using namespace model;
+
+#include "../fileio/DictionaryFileReader.h"
+using namespace fileio;
 
 namespace view
 {
@@ -48,7 +52,7 @@ private:
 
 
     vector<Fl_Button*> buttonBoard;
-    vector<string*> buttonLetterBoard;
+        vector<string*> buttonLetterBoard;
     Fl_Button* previousLetter;
 
     int letterCount;
@@ -68,6 +72,9 @@ private:
 
     vector<string> timeGroup = {"1 Minute", "2 Minutes", "3 Minutes"};
     vector<string> letterGroup = {"5 Letters", "6 Letters", "7 Letters"};
+
+    vector<string> allValidWords;
+    Dictionary* dictionary;
 
 
 public:
