@@ -41,7 +41,7 @@
 1556624739 source:/home/csuser/GroupCWordScramble/main.cpp
 	"view/WordScrambleWindow.h"
 
-1556624801 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
+1556628704 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
@@ -52,7 +52,6 @@
 	<FL/Fl_Output.H>
 	<FL/Fl_Round_Button.H>
 	<vector>
-	<iostream>
 	<algorithm>
 	<sstream>
 	<string>
@@ -106,7 +105,7 @@
 1555781793 source:/home/csuser/GroupCWordScramble/model/WordCollection.cpp
 	"WordCollection.h"
 
-1556624740 /home/csuser/GroupCWordScramble/utilities/Utils.h
+1556628011 /home/csuser/GroupCWordScramble/utilities/Utils.h
 	<cstdlib>
 	<string>
 	<sstream>
@@ -114,14 +113,13 @@
 	<algorithm>
 	<iostream>
 
-1556626025 source:/home/csuser/GroupCWordScramble/utilities/Utils.cpp
+1556628736 source:/home/csuser/GroupCWordScramble/utilities/Utils.cpp
 	"Utils.h"
 
-1556619201 source:/home/csuser/GroupCWordScramble/model/Dictionary.cpp
+1556628031 source:/home/csuser/GroupCWordScramble/model/Dictionary.cpp
 	"Dictionary.h"
-	<iostream>
 
-1556619069 /home/csuser/GroupCWordScramble/model/Dictionary.h
+1556628147 /home/csuser/GroupCWordScramble/model/Dictionary.h
 	<vector>
 	<string>
 	<iostream>
@@ -144,7 +142,7 @@
 1555794086 source:/home/csuser/GroupCWordScramble/model/RandomLetterGenerator.cpp
 	"RandomLetterGenerator.h"
 
-1555793991 /home/csuser/GroupCWordScramble/model/RandomLetterGenerator.h
+1556628452 /home/csuser/GroupCWordScramble/model/RandomLetterGenerator.h
 	<vector>
 	<cstdlib>
 	<stdexcept>
@@ -257,7 +255,7 @@
 
 1556388045 /home/csuser/GroupCWordScramble/model/TernarySearchTree.h
 
-1556610337 /home/csuser/GroupCWordScramble/model/TrieNode.h
+1556628350 /home/csuser/GroupCWordScramble/model/TrieNode.h
 	"../utilities/Utils.h"
 
 1556610346 source:/home/csuser/GroupCWordScramble/model/TrieNode.cpp
@@ -267,7 +265,7 @@
 	"TrieTree.h"
 	<iostream>
 
-1556627746 /home/csuser/GroupCWordScramble/model/TrieTree.h
+1556627946 /home/csuser/GroupCWordScramble/model/TrieTree.h
 	"../model/TrieNode.h"
 	<bits/stdc++.h>
 
@@ -298,7 +296,7 @@
 1556626043 source:/home/csuser/GroupCWordScramble/view/WordDisplayFormatter.cpp
 	"WordDisplayFormatter.h"
 
-1556624801 /home/csuser/GroupCWordScramble/view/WordDisplayFormatter.h
+1556628596 /home/csuser/GroupCWordScramble/view/WordDisplayFormatter.h
 	<sstream>
 	<iomanip>
 	<algorithm>

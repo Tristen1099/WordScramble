@@ -209,7 +209,7 @@ void WordScrambleWindow::createAndDisplayTimeRadioButtons()
 
     this->timeRadioGroup->end();
 
-    this->timeRadioGroupButton[1]->set();
+    this->timeRadioGroupButton[0]->set();
 }
 
 void WordScrambleWindow::createAndDisplayLetterRadioButtons()
