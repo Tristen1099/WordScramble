@@ -4,9 +4,9 @@
 namespace fileio
 {
 
-DictionaryFileReader::DictionaryFileReader(const string& filename)
+DictionaryFileReader::DictionaryFileReader(const string& path)
 {
-    this->filename = filename;
+    this->path = path;
 }
 
 bool DictionaryFileReader::char_isspace(char c)
@@ -17,7 +17,7 @@ bool DictionaryFileReader::char_isspace(char c)
 Dictionary* DictionaryFileReader::readFileToDictionary()
 {
     string line;
-    ifstream infile(this->filename);
+    ifstream infile(this->path);
     vector<string> words;
 
     while (getline(infile, line))

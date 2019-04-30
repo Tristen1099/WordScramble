@@ -22,7 +22,7 @@ WordScrambleController::~WordScrambleController()
 }
 
 
-void WordScrambleController::readFileToDictionary(const string& filename)
+void WordScrambleController::readFileToDictionary()
 {
     delete this->dictionary;
     this->dictionary = this->fileReader->readFileToDictionary();
@@ -46,7 +46,15 @@ void WordScrambleController::setValidWordsWith(vector<char> letters)
     this->validWords = this->dictionary->findAllWordsContaining(letters);
 }
 
+set<string>* WordScrambleController::getValidWords() const
+{
+    return this->validWords;
+}
 
+set<string>* WordScrambleController::getGuessedWords() const
+{
+    return this->guessedWords;
+}
 
 vector<char> WordScrambleController::getRandomLetters(size_t letterCount)
 {

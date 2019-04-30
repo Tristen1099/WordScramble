@@ -13,7 +13,7 @@ string removeWhitespaces(string str)
 
 void playWow()
 {
-    const int wowFileCount = 7;
+    const int wowFileCount = 6;
     int fileNumber = rand() % wowFileCount;
 
     stringstream command;

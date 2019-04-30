@@ -19,7 +19,6 @@ class WordScrambleController
 {
 private:
     static const string& DICTIONARY_FILE_NAME;
-
     Dictionary* dictionary;
     DictionaryFileReader* fileReader;
     set<string>* guessedWords;
@@ -49,10 +48,7 @@ public:
     // @precondition file must exist
     // @postcondition dictionary contains the data from the file
     //
-    // @param filename the file name
-    //
-    //
-    void readFileToDictionary(const string& filename);
+    void readFileToDictionary();
 
     //
     // Says whether the guess is a good one or not

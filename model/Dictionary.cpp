@@ -1,8 +1,5 @@
 #include "Dictionary.h"
 
-#include <iostream>
-using namespace std;
-
 namespace model
 {
 
@@ -33,8 +30,6 @@ set<string>* Dictionary::findAllWordsContaining(vector<char> letters)
 
     this->wordTree.findAllWordsUsing(charLetters, letterCount, validWords);
     delete charLetters;
-    //sort(validWords->begin(), validWords->end());
-    //validWords->erase(unique( validWords->begin(), validWords->end() ), validWords->end());
 
     return validWords;
 }
