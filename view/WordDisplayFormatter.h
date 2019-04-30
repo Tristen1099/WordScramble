@@ -13,7 +13,7 @@ namespace view
 class WordDisplayFormatter
 {
 private:
-    static const size_t COLUMN_WIDTH = 10;
+    static const size_t COLUMN_WIDTH = 14;
 
 public:
     static const string format(const set<string>* guessed, const set<string>* allWords);

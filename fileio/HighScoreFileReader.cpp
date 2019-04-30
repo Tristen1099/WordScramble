@@ -22,7 +22,7 @@ void HighScoreFileReader::loadFile()
         while ( getline (myfile,line) )
         {
 
-size_t pos = 0;
+            size_t pos = 0;
             string score;
             string timeLimit;
             string date;

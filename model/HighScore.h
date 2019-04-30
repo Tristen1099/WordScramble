@@ -11,21 +11,21 @@ namespace model
 
 class HighScore
 {
-          public:
-                    HighScore();
-                    virtual ~HighScore();
-                    int getHighScore();
-                    void setHighScore(int score);
-                    string getTimeLimit();
-                    void setTimeLimit(string time);
-                    string getDate();
-                    void setDate(string date);
+public:
+    HighScore();
+    virtual ~HighScore();
+    int getHighScore();
+    void setHighScore(int score);
+    string getTimeLimit();
+    void setTimeLimit(string time);
+    string getDate();
+    void setDate(string date);
 
 
-          private:
-                    int highScore;
-                    string timeLimit;
-                    string date;
+private:
+    int highScore;
+    string timeLimit;
+    string date;
 };
 
 }

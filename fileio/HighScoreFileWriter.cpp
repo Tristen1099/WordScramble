@@ -16,7 +16,7 @@ HighScoreFileWriter::~HighScoreFileWriter()
     //dtor
 }
 
-void HighScoreFileWriter::writeToFile(const string filePath, const string output)
+    void HighScoreFileWriter::writeToFile(const string filePath, const string output)
 {
     if(filePath.empty())
     {
