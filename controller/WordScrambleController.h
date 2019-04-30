@@ -38,6 +38,7 @@ private:
     void clearValidWords();
     void clearGuessedWords();
 
+
 };
 }
 

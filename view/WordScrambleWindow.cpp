@@ -50,10 +50,11 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->clearLettersButton = new Fl_Button(470, 248, 30, 30, "X");
 
     this->scoreTitle = new Fl_Box(522,170, 50,50,"~Score~");
-    this->strSecondsRemaining = new string("0");
-    this->currentScore = new Fl_Box(522,195, 50,50,"0");
+    this->strCurrentScore = new string("0");
+    this->currentScore = new Fl_Box(522,195, 50,50,this->strCurrentScore->c_str());
 
     this->timeRemainingTitle = new Fl_Box(521,70, 50,50," ~Time~ \n ~Remaining~");
+    this->strSecondsRemaining = new string("0");
     this->currentTime = new Fl_Box(512,112, 70,50,this->strSecondsRemaining->c_str());
 
     this->summaryOutputTextBuffer = new Fl_Text_Buffer();
@@ -174,14 +175,29 @@ void WordScrambleWindow::updateCurrentTimeLabel()
     this->currentTime->label(this->getTimeString()->c_str());
 }
 
+void WordScrambleWindow::updateCurrentScoreLabel()
+{
+    this->currentScore->label(this->getScoreString()->c_str());
+}
+
 string* WordScrambleWindow::getTimeString()
 {
     return this->strSecondsRemaining;
 }
 
+string* WordScrambleWindow::getScoreString()
+{
+    return this->strCurrentScore;
+}
+
 void WordScrambleWindow::setTimeString(string time)
 {
     *this->strSecondsRemaining = time;
+}
+
+void WordScrambleWindow::setScoreString(string score)
+{
+    *this->strCurrentScore = score;
 }
 
 void WordScrambleWindow::decreaseSecondsRemaining()
@@ -333,32 +349,98 @@ void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
 
+    string userGuess(window->wordGuessInput->value());
+
+    bool valid = false;
+    for(size_t i = 0; i < window->allValidWords->size(); i++)
+    {
+
+        string word;
+        word = window->allValidWords->at(i);
+
+        if(userGuess == word)
+        {
+            valid = true;
+            window->allValidWords->erase(window->allValidWords->begin()+i);
+
+            int score;
+            stringstream stream;
+
+            stream << window->currentScore->label();
+            stream >> score;
+            score += window->getScoreForWord(word);
+
+            string newScore;
+            newScore = to_string(score);
+
+            window->setScoreString(newScore);
+            window->updateCurrentScoreLabel();
+
+            break;
+        }
+
+    }
+    if(!(valid))
+    {
+        int score;
+        stringstream stream;
+
+        stream << window->currentScore->label();
+        stream >> score;
+
+        if(!(score <= 0))
+        {
+
+            score -= 10;
+        }
 
 
+        string newScore;
+        newScore = to_string(score);
+
+        window->setScoreString(newScore);
+        window->updateCurrentScoreLabel();
+
+    }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    for(size_t i = 0; i < window->buttonBoard.size(); i++)
+    {
+        window->buttonBoard[i]->show();
+    }
 
     window->wordGuessInput->value("");
+}
+
+int WordScrambleWindow::getScoreForWord(string word)
+{
+    int wordLength;
+    wordLength = word.length();
+    int score;
+    score = 0;
+
+    if(wordLength == 3)
+    {
+        score = 60;
+    }
+    else if(wordLength == 4)
+    {
+        score = 120;
+    }
+    else if(wordLength == 5)
+    {
+        score = 200;
+    }
+    else if(wordLength == 6)
+    {
+        score = 300;
+    }
+    else if(wordLength == 7)
+    {
+        score = 420;
+    }
+
+    return score;
 }
 
 void WordScrambleWindow::cbLetterButtonPressed(Fl_Widget* widget, void* data)
