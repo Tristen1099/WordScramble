@@ -11,7 +11,6 @@
 #include <FL/Fl_Output.H>
 #include <FL/Fl_Round_Button.H>
 
-
 #include <vector>
 #include <iostream>
 #include <algorithm>
@@ -109,6 +108,7 @@ public:
     void updateSummaryText();
     void setHighScoreText(const string& outputText);
     void endGame();
+    void wow();
 
 private:
 

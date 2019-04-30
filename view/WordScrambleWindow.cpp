@@ -128,6 +128,11 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 
 }
 
+void wow()
+{
+
+}
+
 void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
 {
     WordScrambleWindow* window = (WordScrambleWindow*)data;
@@ -431,6 +436,10 @@ void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
     window->wordGuessInput->value("");
     window->userWordInput = "";
     window->updateSummaryText();
+    if (valid)
+    {
+        playWow();
+    }
 }
 
 int WordScrambleWindow::getScoreForWord(const string& word)
