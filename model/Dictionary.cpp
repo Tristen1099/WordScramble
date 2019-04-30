@@ -56,35 +56,4 @@ vector<string>* Dictionary::findAllWordsContaining(vector<char> letters)
     return validWords;
 }
 
-bool Dictionary::validWord(const string& word, vector<char> letters)
-{
-    /*
-    bool valid = true;
-    for (size_t i = 0; i < word.size(); i++)
-    {
-        char currentWordLetter = word.at(i);
-        bool validLetter = false;
-        for (size_t j = 0; j < letters.size(); j++)
-        {
-            if (letters[j] == currentWordLetter)
-            {
-                validLetter = true;
-                letters.erase(letters.begin() + j);
-                break;
-            }
-        }
-
-
-        if (!validLetter)
-        {
-            valid = false;
-            break;
-        }
-
-    }
-    return valid;
-    */
-
-}
-
 }

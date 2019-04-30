@@ -30,7 +30,6 @@ public:
 
 private:
     bool wordContainsEachLetter(const string& word, vector<char> letters);
-    bool validWord(const string& word, vector<char> letters);
 };
 
 }
