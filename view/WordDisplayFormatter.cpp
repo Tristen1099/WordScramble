@@ -47,6 +47,7 @@ const string WordDisplayFormatter::drawWord(const string& word, const vector<str
     {
         output = string(word.size(), '#');
     }
+    cout << word << endl;
     return output;
 }
 }

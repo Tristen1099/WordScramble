@@ -129,6 +129,53 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 
 }
 
+void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
+{
+    WordScrambleWindow* window = (WordScrambleWindow*)data;
+    window->begin();
+
+    Fl::remove_timeout(Timer_CB, window);
+
+    window->wordGuessInput->value("");
+    window->setValuesForLetterAndTimeSpecs();
+    Fl::add_timeout(0, Timer_CB, window);
+    window->scrambleButton->activate();
+    window->enterButton->activate();
+    window->letterRadioGroup->hide();
+    window->timeRadioGroup->hide();
+    window->currentTime->show();
+    window->instantiateButtonBoardInline(window->letterCount);
+    window->resetButton->show();
+    window->removeLetterButton->activate();
+    window->clearLettersButton->activate();
+    window->highScoreOutputTextDisplay->hide();
+    window->highScoresTitle->hide();
+
+    std::vector<char> validLetters;
+    for (int i=0; i<window->buttonLetterBoard.size(); i++)
+    {
+        string *letter;
+        letter = window->buttonLetterBoard[i];
+
+        validLetters.push_back(letter->at(0));
+    }
+    window->controller.setValidWordsWith(validLetters);
+
+    string summary = WordDisplayFormatter::format(window->controller.getGuessedWords(), window->controller.getValidWords());
+    window->setSummaryText(summary);
+
+    window->end();
+
+
+}
+
+void WordScrambleWindow::updateSummaryText()
+{
+    string summary = WordDisplayFormatter::format(this->controller.getGuessedWords(), this->controller.getValidWords());
+    cout << summary << endl;
+    this->setSummaryText(summary);
+}
+
 void WordScrambleWindow::createAndDisplayTimeRadioButtons()
 {
     const int X_RADIO_GROUP = 7;
@@ -215,40 +262,6 @@ int WordScrambleWindow::getSecondsRemaining()
     return this->secondsRemaining;
 }
 
-
-void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
-{
-    WordScrambleWindow* window = (WordScrambleWindow*)data;
-    Fl::remove_timeout(Timer_CB, window);
-
-    window->begin();
-    window->wordGuessInput->value("");
-    window->setValuesForLetterAndTimeSpecs();
-    Fl::add_timeout(0, Timer_CB, window);
-    window->scrambleButton->activate();
-    window->enterButton->activate();
-    window->letterRadioGroup->hide();
-    window->timeRadioGroup->hide();
-    window->currentTime->show();
-    window->instantiateButtonBoardInline(window->letterCount);
-    window->resetButton->show();
-    window->removeLetterButton->activate();
-    window->clearLettersButton->activate();
-    window->highScoreOutputTextDisplay->hide();
-    window->highScoresTitle->hide();
-    window->end();
-
-    std::vector<char> validLetters;
-    for (int i=0; i<window->buttonLetterBoard.size(); i++)
-    {
-        string *letter;
-        letter = window->buttonLetterBoard[i];
-
-        validLetters.push_back(letter->at(0));
-    }
-
-    window->controller.setValidWordsWith(validLetters);
-}
 
 void WordScrambleWindow::cbResetGame(Fl_Widget* widget, void* data)
 {
@@ -413,6 +426,7 @@ void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
 
     window->wordGuessInput->value("");
     window->userWordInput = "";
+    window->updateSummaryText();
 }
 
 int WordScrambleWindow::getScoreForWord(const string& word)
@@ -521,6 +535,7 @@ void WordScrambleWindow::endGame()
     this->controller.resetGame();
     this->highScoreOutputTextDisplay->show();
     this->highScoresTitle->show();
+    this->updateSummaryText();
 
 }
 

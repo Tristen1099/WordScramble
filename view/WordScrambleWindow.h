@@ -22,6 +22,9 @@ using namespace std;
 #include "../controller/WordScrambleController.h"
 using namespace controller;
 
+#include "../view/WordDisplayFormatter.h"
+using namespace view;
+
 namespace view
 {
 
@@ -102,6 +105,7 @@ public:
     static void cdRemoveLetter(Fl_Widget* widget, void* data);
     static void cbClearLetters(Fl_Widget* widget, void* data);
     void setSummaryText(const string& outputText);
+    void updateSummaryText();
     void setHighScoreText(const string& outputText);
     void endGame();
 

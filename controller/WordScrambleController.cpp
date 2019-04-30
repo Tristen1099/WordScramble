@@ -32,7 +32,12 @@ bool WordScrambleController::guessWord(const string& word)
 {
     bool isAlreadyGuessed = find(this->guessedWords->begin(), this->guessedWords->end(), word) != this->guessedWords->end();
     bool isValid = find(this->validWords->begin(), this->validWords->end(), word) != this->validWords->end();
-    return (!isAlreadyGuessed && isValid);
+    bool correct = (!isAlreadyGuessed && isValid);
+    if (correct)
+    {
+        this->guessedWords->push_back(word);
+    }
+    return correct;
 }
 
 void WordScrambleController::setValidWordsWith(vector<char> letters)
