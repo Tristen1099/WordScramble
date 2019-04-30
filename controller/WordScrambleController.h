@@ -18,8 +18,8 @@ private:
 
     Dictionary* dictionary;
     DictionaryFileReader* fileReader;
-    vector<string>* guessedWords;
-    vector<string>* validWords;
+    set<string>* guessedWords;
+    set<string>* validWords;
 
 public:
     WordScrambleController();
@@ -29,8 +29,8 @@ public:
     bool guessWord(const string& word);
     void setValidWordsWith(vector<char> letters);
 
-    vector<string>* getValidWords() const;
-    vector<string>* getGuessedWords() const;
+    set<string>* getValidWords() const;
+    set<string>* getGuessedWords() const;
     vector<char> getRandomLetters(size_t letterCount);
 
     void resetGame();

@@ -109,11 +109,11 @@
 1556343874 source:/home/csuser/GroupCWordScramble/utilities/Utils.cpp
 	"Utils.h"
 
-1556613047 source:/home/csuser/GroupCWordScramble/model/Dictionary.cpp
+1556619201 source:/home/csuser/GroupCWordScramble/model/Dictionary.cpp
 	"Dictionary.h"
 	<iostream>
 
-1556613030 /home/csuser/GroupCWordScramble/model/Dictionary.h
+1556619069 /home/csuser/GroupCWordScramble/model/Dictionary.h
 	<vector>
 	<string>
 	<iostream>
@@ -255,11 +255,11 @@
 1556610346 source:/home/csuser/GroupCWordScramble/model/TrieNode.cpp
 	"TrieNode.h"
 
-1556612757 source:/home/csuser/GroupCWordScramble/model/TrieTree.cpp
+1556619032 source:/home/csuser/GroupCWordScramble/model/TrieTree.cpp
 	"TrieTree.h"
 	<iostream>
 
-1556612782 /home/csuser/GroupCWordScramble/model/TrieTree.h
+1556619036 /home/csuser/GroupCWordScramble/model/TrieTree.h
 	"../model/TrieNode.h"
 	<bits/stdc++.h>
 
@@ -291,15 +291,16 @@
 	"WordDisplayFormatter.h"
 	<iostream>
 
-1556609798 /home/csuser/GroupCWordScramble/view/WordDisplayFormatter.h
+1556619280 /home/csuser/GroupCWordScramble/view/WordDisplayFormatter.h
 	<sstream>
 	<iomanip>
 	<algorithm>
+	<set>
 
-1556617032 source:/home/csuser/GroupCWordScramble/controller/WordScrambleController.cpp
+1556619136 source:/home/csuser/GroupCWordScramble/controller/WordScrambleController.cpp
 	"WordScrambleController.h"
 
-1556614548 /home/csuser/GroupCWordScramble/controller/WordScrambleController.h
+1556619169 /home/csuser/GroupCWordScramble/controller/WordScrambleController.h
 	"../model/Dictionary.h"
 	"../model/RandomLetterGenerator.h"
 	"../fileio/DictionaryFileReader.h"

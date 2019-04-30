@@ -24,7 +24,7 @@ public:
     Dictionary(vector<string> words);
 
     void setCollection(vector<string> newCollection);
-    vector<string>* findAllWordsContaining(vector<char> letters);
+    set<string>* findAllWordsContaining(vector<char> letters);
 
 private:
     bool wordContainsEachLetter(const string& word, vector<char> letters);

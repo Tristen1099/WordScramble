@@ -23,9 +23,9 @@ void Dictionary::setCollection(vector<string> newCollection)
     }
 }
 
-vector<string>* Dictionary::findAllWordsContaining(vector<char> letters)
+set<string>* Dictionary::findAllWordsContaining(vector<char> letters)
 {
-    vector<string>* validWords = new vector<string>();
+    set<string>* validWords = new set<string>();
     size_t letterCount = letters.size();
     char* charLetters = new char[letterCount];
     copy(letters.begin(), letters.end(), charLetters);
@@ -33,8 +33,8 @@ vector<string>* Dictionary::findAllWordsContaining(vector<char> letters)
 
     this->wordTree.findAllWordsUsing(charLetters, letterCount, validWords);
     delete charLetters;
-    sort(validWords->begin(), validWords->end());
-    validWords->erase(unique( validWords->begin(), validWords->end() ), validWords->end());
+    //sort(validWords->begin(), validWords->end());
+    //validWords->erase(unique( validWords->begin(), validWords->end() ), validWords->end());
 
     return validWords;
 }

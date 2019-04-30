@@ -63,14 +63,14 @@ bool TrieTree::search(const string& key)
     return (pCrawl != NULL && pCrawl->isEndOfWord());
 }
 
-void TrieTree::findAllWordsUsing(char* letters, int letterCount, vector<string>* result)
+void TrieTree::findAllWordsUsing(char* letters, int letterCount, set<string>* result)
 {
     string* previous = new string("");
     this->findAllWordsUsing(letters, letterCount, previous, result, this->root);
     delete previous;
 }
 
-void TrieTree::findAllWordsUsing(char* letters, int letterCount, string* previous, vector<string>* result, TrieNode* root)
+void TrieTree::findAllWordsUsing(char* letters, int letterCount, string* previous, set<string>* result, TrieNode* root)
 {
 
 
@@ -91,7 +91,7 @@ void TrieTree::findAllWordsUsing(char* letters, int letterCount, string* previou
             *previous += currentLetter;
             if (child->isEndOfWord())
             {
-                result->push_back(*previous);
+                result->insert(*previous);
             }
 
             if (letterCount > 0)

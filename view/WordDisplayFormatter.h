@@ -4,6 +4,7 @@
 #include <sstream>
 #include <iomanip>
 #include <algorithm>
+#include <set>
 using namespace std;
 
 namespace view
@@ -15,11 +16,11 @@ private:
     static const size_t COLUMN_WIDTH = 10;
 
 public:
-    static const string format(const vector<string>* guessed, const vector<string>* allWords);
+    static const string format(const set<string>* guessed, const set<string>* allWords);
 
 
 private:
-    static const string drawWord(const string& word, const vector<string>* guessed);
+    static const string drawWord(const string& word, const set<string>* guessed);
 };
 
 }
