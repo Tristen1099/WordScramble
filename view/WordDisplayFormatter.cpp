@@ -13,10 +13,10 @@ const string WordDisplayFormatter::format(const set<string>* guessed, const set<
     size_t maxForloop = allWords->size() - allWords->size()%3;
     for (size_t i = 0; i < maxForloop; i+=3)
     {
-        sstream << setw(COLUMN_WIDTH) << left << drawWord(*std::next(allWords->begin(), i+0), guessed);
+            sstream << setw(COLUMN_WIDTH) << left << drawWord(*std::next(allWords->begin(), i+0), guessed);
         sstream << setw(COLUMN_WIDTH) << left << drawWord(*std::next(allWords->begin(), i+1), guessed);
         sstream << setw(COLUMN_WIDTH) << left << drawWord(*std::next(allWords->begin(), i+2), guessed);
-        sstream << endl;
+            sstream << endl;
     }
 
     if (allWords->size()-maxForloop == 1)

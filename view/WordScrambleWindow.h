@@ -21,8 +21,15 @@ using namespace std;
 #include "../controller/WordScrambleController.h"
 using namespace controller;
 
+#include "../model/HighScore.h"
+using namespace model;
+
 #include "../view/WordDisplayFormatter.h"
 using namespace view;
+
+#include "../fileio/HighScoreFileReader.h"
+#include "../fileio/HighScoreFileWriter.h"
+using namespace fileio;
 
 namespace view
 {
@@ -35,6 +42,7 @@ private:
 
     const static size_t TIME_RADIO_GROUP_SIZE = 3;
     const static size_t LETTER_RADIO_GROUP_SIZE = 3;
+    const string SCORE_FILE_PATH = "other/scores.txt";
 
     WordScrambleController controller;
 
@@ -81,6 +89,8 @@ private:
     vector<string> timeGroup = {"1 Minute", "2 Minutes", "3 Minutes"};
     vector<string> letterGroup = {"5 Letters", "6 Letters", "7 Letters"};
 
+    vector<HighScore> highScores;
+
 
 public:
 
@@ -124,6 +134,9 @@ private:
 
     void setValuesForLetterAndTimeSpecs();
     int getScoreForWord(const string& word);
+
+    void updateHighScoreDisplay();
+    void saveHighScores();
 
 };
 

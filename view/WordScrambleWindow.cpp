@@ -124,6 +124,13 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->clearLettersButton->box(FL_RSHADOW_BOX);
 
 
+    string scoreFile = SCORE_FILE_PATH;
+    HighScoreFileReader* reader = new HighScoreFileReader(scoreFile);
+    reader->loadFile();
+    this->highScores = reader->getScores();
+    this->updateHighScoreDisplay();
+
+
     end();
 
 }
@@ -549,6 +556,7 @@ void WordScrambleWindow::endGame()
     this->highScoreOutputTextDisplay->show();
     this->highScoresTitle->show();
     this->updateSummaryText();
+    this->saveHighScores();
 
 }
 
@@ -581,6 +589,82 @@ void WordScrambleWindow::setValuesForLetterAndTimeSpecs()
     {
         this->letterCount = 7;
     }
+
+}
+
+void WordScrambleWindow::updateHighScoreDisplay()
+{
+
+    string output = "";
+
+    for(size_t i = 0; i < this->highScores.size(); i ++)
+    {
+        stringstream sstream;
+        HighScore currentScore = this->highScores[i];
+        sstream << setw(12) << left << currentScore.getHighScore() << setw(15) << currentScore.getDate() << setw(12) << currentScore.getTimeLimit();
+        output += sstream.str() + "\n";
+    }
+
+    this->setHighScoreText(output);
+}
+
+void WordScrambleWindow::saveHighScores()
+{
+    HighScore newHighScore;
+
+    int score;
+    stringstream stream;
+    stream << this->currentScore->label();
+    stream >> score;
+
+    string timeLimit;
+    if(this->timeRadioGroupButton[0]->value() == 1)
+    {
+        timeLimit = "1 Minute";
+    }
+    else if(this->timeRadioGroupButton[1]->value() == 1)
+    {
+        timeLimit = "2 Minutes";
+    }
+    else
+    {
+        timeLimit = "3 Minutes";
+    }
+
+    string date;
+    int month;
+    int day;
+    int year;
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+
+    month = 1 + ltm->tm_mon;
+    day = ltm->tm_mday;
+    year = 1900 + ltm->tm_year;
+    date = to_string(month) + "/" + to_string(day) + "/" + to_string(year);
+
+
+    newHighScore.setHighScore(score);
+    newHighScore.setDate(date);
+    newHighScore.setTimeLimit(timeLimit);
+
+    this->highScores.push_back(newHighScore);
+
+
+
+    HighScoreFileWriter writer;
+    string output = "";
+    for(size_t i = 0; i < this->highScores.size(); i++)
+    {
+        HighScore current;
+        current = this->highScores[i];
+
+        output += to_string(current.getHighScore()) + "," + current.getTimeLimit() + "," + current.getDate();
+        output += "\n";
+    }
+    writer.writeToFile(SCORE_FILE_PATH,output);
+    this->updateHighScoreDisplay();
+
 
 }
 

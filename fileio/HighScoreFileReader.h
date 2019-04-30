@@ -8,6 +8,9 @@
 #include <string>
 using namespace std;
 
+#include "../model/HighScore.h"
+using namespace model;
+
 namespace fileio
 {
 
@@ -31,13 +34,13 @@ public:
     //Returns the vector of scores from the loaded file
     //@precondition none
     //@postcondition none
-    vector<string> getScores();
+    vector<HighScore> getScores();
 
 
 private:
 
     string file;
-    vector<string> scores;
+    vector<HighScore> scores;
 };
 
 }
