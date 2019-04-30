@@ -46,11 +46,13 @@ private:
     Fl_Button* enterButton;
     Fl_Button* removeLetterButton;
     Fl_Button* clearLettersButton;
+
     Fl_Box* gameTitle;
     Fl_Box* scoreTitle;
     Fl_Box* currentScore;
     Fl_Box* timeRemainingTitle;
     Fl_Box* highScoresTitle;
+
     Fl_Input* wordGuessInput;
     Fl_Text_Buffer* summaryOutputTextBuffer;
     Fl_Text_Display* summaryOutputTextDisplay;
@@ -60,11 +62,10 @@ private:
 
     vector<Fl_Button*> buttonBoard;
     vector<string*> buttonLetterBoard;
-    Fl_Button* previousLetter;
+    vector<Fl_Button*> previousLetterButtons;
 
     int letterCount;
     string userWordInput;
-    void addLetterToInput(const char* letter);
 
     int secondsRemaining;
     string* strSecondsRemaining;
@@ -118,6 +119,8 @@ private:
 
     void createAndDisplayTimeRadioButtons();
     void createAndDisplayLetterRadioButtons();
+
+    void addLetterToInput(const char* letter);
 
     void setValuesForLetterAndTimeSpecs();
     int getScoreForWord(const string& word);

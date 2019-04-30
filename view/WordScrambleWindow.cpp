@@ -105,7 +105,6 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->removeLetterButton->deactivate();
     this->clearLettersButton->deactivate();
     this->currentTime->hide();
-    this->previousLetter = nullptr;
 
     this->createAndDisplayLetterRadioButtons();
     this->createAndDisplayTimeRadioButtons();
@@ -285,7 +284,10 @@ void WordScrambleWindow::cbScrambleLetters(Fl_Widget* widget, void* data)
     }
 
     window->buttonBoard.clear();
+    window->previousLetterButtons.clear();
     window->wordGuessInput->value("");
+    window->userWordInput = "";
+
 
     createButtonBoard(window);
 
@@ -296,17 +298,17 @@ void WordScrambleWindow::cdRemoveLetter(Fl_Widget* widget, void* data)
 
     WordScrambleWindow* window = (WordScrambleWindow*)data;
 
-    if(window->previousLetter != nullptr)
+    if(window->previousLetterButtons.size() > 0)
     {
-        window->previousLetter->show();
+        Fl_Button* last = window->previousLetterButtons.back();
+        last->show();
+        window->previousLetterButtons.pop_back();
 
         window->userWordInput = window->userWordInput.substr(0, window->userWordInput.size()-1);
 
         window->wordGuessInput->value(window->userWordInput.c_str());
 
     }
-
-    window->previousLetter = nullptr;
 
 }
 
@@ -466,7 +468,7 @@ void WordScrambleWindow::cbLetterButtonPressed(Fl_Widget* widget, void* data)
     window->addLetterToInput(widget->label());
     Fl_Button* button = (Fl_Button*)widget;
     button->hide();
-    window->previousLetter = button;
+    window->previousLetterButtons.push_back(button);
 
     window = nullptr;
 }
