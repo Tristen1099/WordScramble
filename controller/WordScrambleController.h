@@ -4,13 +4,13 @@
 
 class WordScrambleController
 {
-    public:
-        WordScrambleController();
-        virtual ~WordScrambleController();
+public:
+    WordScrambleController();
+    virtual ~WordScrambleController();
 
-    protected:
+protected:
 
-    private:
+private:
 };
 
 #endif // WORDSCRAMBLECONTROLLER_H

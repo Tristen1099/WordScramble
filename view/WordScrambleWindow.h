@@ -64,9 +64,10 @@ private:
 
     int secondsRemaining;
     string* strSecondsRemaining;
+    string* strCurrentScore;
 
     ///Fl_Output* timeOutputLabel;
-    Fl_Group* timeRadioGroup;
+        Fl_Group* timeRadioGroup;
     Fl_Round_Button* timeRadioGroupButton[TIME_RADIO_GROUP_SIZE];
 
     ///Fl_Output* letterOutputLabel;
@@ -86,9 +87,12 @@ public:
     virtual ~WordScrambleWindow();
 
     string* getTimeString();
+    string* getScoreString();
     void setTimeString(string time);
+    void setScoreString(string score);
     void decreaseSecondsRemaining();
     void updateCurrentTimeLabel();
+    void updateCurrentScoreLabel();
     int getSecondsRemaining();
     Fl_Box* currentTime;
 
@@ -113,6 +117,7 @@ private:
     void createAndDisplayLetterRadioButtons();
 
     void setValuesForLetterAndTimeSpecs();
+    int getScoreForWord(string word);
 
 };
 

@@ -101,57 +101,57 @@ void TrieTree::findAllWordsUsing(char* letters, int letterCount, string* previou
 
 
 
-/*
-    TrieNode* pCrawl = root;
-    char* changingLetters = new char[letterCount];
-    for (int i = 0; i < letterCount; i++)
-    {
-        changingLetters[i] = letters[i];
-    }
-
-    for (size_t i = 0; i < letterCount; i++)
-    {
-
-        char currentLetter = changingLetters[0];
-        int childIndex = currentLetter - 'a';
-        cout << "Checking letter at index " << i << " " << currentLetter << " from collection " << changingLetters << endl;
-
-
-        TrieNode* child = pCrawl->childAt(childIndex);
-
-        if (child != nullptr)
+    /*
+        TrieNode* pCrawl = root;
+        char* changingLetters = new char[letterCount];
+        for (int i = 0; i < letterCount; i++)
         {
-            cout << "Child found" << endl;
-            *previous += currentLetter;
-            if (child->isEndOfWord())
-            {
-                result->push_back(*previous);
-                cout << "Child is end of word. Pushed \"" << *previous << "\"" << endl;
-            }
-
-            if (letterCount > 0)
-            {
-                char* nextLevelLetters = createWithoutFirstLetter(changingLetters, letterCount);
-                cout << "Step into " << currentLetter << endl;
-                this->findAllWordsUsing(nextLevelLetters, letterCount-1, previous, result, child);
-                cout << "delete nextLevel" << endl;
-                delete nextLevelLetters;
-                cout << "end nextLevel" << endl;
-            }
-            previous->pop_back();
-
-        }
-        else
-        {
-            cout << "Not a child" << endl;
+            changingLetters[i] = letters[i];
         }
 
+        for (size_t i = 0; i < letterCount; i++)
+        {
 
-        changingLetters = this->createShiftedLetters(changingLetters, letterCount);
-    }
-    delete changingLetters;
-    cout << "Step out" << endl;
-    */
+            char currentLetter = changingLetters[0];
+            int childIndex = currentLetter - 'a';
+            cout << "Checking letter at index " << i << " " << currentLetter << " from collection " << changingLetters << endl;
+
+
+            TrieNode* child = pCrawl->childAt(childIndex);
+
+            if (child != nullptr)
+            {
+                cout << "Child found" << endl;
+                *previous += currentLetter;
+                if (child->isEndOfWord())
+                {
+                    result->push_back(*previous);
+                    cout << "Child is end of word. Pushed \"" << *previous << "\"" << endl;
+                }
+
+                if (letterCount > 0)
+                {
+                    char* nextLevelLetters = createWithoutFirstLetter(changingLetters, letterCount);
+                    cout << "Step into " << currentLetter << endl;
+                    this->findAllWordsUsing(nextLevelLetters, letterCount-1, previous, result, child);
+                    cout << "delete nextLevel" << endl;
+                    delete nextLevelLetters;
+                    cout << "end nextLevel" << endl;
+                }
+                previous->pop_back();
+
+            }
+            else
+            {
+                cout << "Not a child" << endl;
+            }
+
+
+            changingLetters = this->createShiftedLetters(changingLetters, letterCount);
+        }
+        delete changingLetters;
+        cout << "Step out" << endl;
+        */
 
 }
 
