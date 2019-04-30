@@ -351,6 +351,11 @@ void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
 
     string userGuess(window->wordGuessInput->value());
 
+    if(userGuess.length() == 0)
+    {
+        return;
+    }
+
     bool valid = false;
     for(size_t i = 0; i < window->allValidWords->size(); i++)
     {
@@ -394,7 +399,6 @@ void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
             score -= 10;
         }
 
-
         string newScore;
         newScore = to_string(score);
 
@@ -410,6 +414,7 @@ void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
     }
 
     window->wordGuessInput->value("");
+    window->userWordInput = "";
 }
 
 int WordScrambleWindow::getScoreForWord(string word)

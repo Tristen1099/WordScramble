@@ -57,6 +57,8 @@
 		</Unit>
 		<Unit filename="utilities/Utils.cpp" />
 		<Unit filename="utilities/Utils.h" />
+		<Unit filename="view/WordDisplayFormatter.cpp" />
+		<Unit filename="view/WordDisplayFormatter.h" />
 		<Unit filename="view/WordScrambleWindow.cpp" />
 		<Unit filename="view/WordScrambleWindow.h" />
 		<Extensions>

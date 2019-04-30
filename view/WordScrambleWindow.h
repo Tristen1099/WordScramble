@@ -67,7 +67,7 @@ private:
     string* strCurrentScore;
 
     ///Fl_Output* timeOutputLabel;
-        Fl_Group* timeRadioGroup;
+    Fl_Group* timeRadioGroup;
     Fl_Round_Button* timeRadioGroupButton[TIME_RADIO_GROUP_SIZE];
 
     ///Fl_Output* letterOutputLabel;
