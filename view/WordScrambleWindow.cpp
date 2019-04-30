@@ -41,11 +41,13 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     begin();
     this->newGameButton = new Fl_Button(8, 70, 90, 30, "New Game");
     this->scrambleButton = new Fl_Button(470, 296, 80, 50, "Scramble");
-    this->enterButton = new Fl_Button(440, 248, 60, 30, "Enter");
+    this->enterButton = new Fl_Button(505, 248, 60, 30, "Enter");
     this->resetButton = new Fl_Button(8, 110, 90, 30, "Reset Game");
 
     this->gameTitle = new Fl_Box(270,8, 50,50,"~The Word Scrambler~");
     this->wordGuessInput = new Fl_Input(230, 250, 200, 25, "Enter Guess Here:");
+    this->removeLetterButton = new Fl_Button(435, 248, 30, 30, "<-");
+    this->clearLettersButton = new Fl_Button(470, 248, 30, 30, "X");
 
     this->scoreTitle = new Fl_Box(522,170, 50,50,"~Score~");
     this->strSecondsRemaining = new string("0");
@@ -61,6 +63,8 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->scrambleButton->callback(cbScrambleLetters, this);
     this->enterButton->callback(cbEnterWord, this);
     this->resetButton->callback(cbResetGame, this);
+    this->removeLetterButton->callback(cdRemoveLetter, this);
+    this->clearLettersButton->callback(cbClearLetters, this);
 
     Fl_Fontsize fontSize = 40;
     Fl_Fontsize scoreFontSize = 20;
@@ -72,6 +76,8 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->newGameButton->color(buttonColor);
     this->resetButton->color(buttonColor);
     this->scrambleButton->color(buttonColor);
+    this->removeLetterButton->color(buttonColor);
+    this->clearLettersButton->color(buttonColor);
     this->enterButton->color(buttonColor);
     this->gameTitle->labelcolor(fontColor);
     this->scoreTitle->labelcolor(fontColor);
@@ -88,6 +94,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->scrambleButton->deactivate();
     this->enterButton->deactivate();
     this->currentTime->hide();
+    this->previousLetter = nullptr;
 
     this->createAndDisplayLetterRadioButtons();
     this->createAndDisplayTimeRadioButtons();
@@ -102,6 +109,8 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->enterButton->box(FL_RSHADOW_BOX);
     this->timeRadioGroup->box(FL_SHADOW_BOX);
     this->letterRadioGroup->box(FL_SHADOW_BOX);
+    this->removeLetterButton->box(FL_RSHADOW_BOX);
+    this->clearLettersButton->box(FL_RSHADOW_BOX);
 
     end();
 
@@ -227,6 +236,40 @@ void WordScrambleWindow::cbScrambleLetters(Fl_Widget* widget, void* data)
 
 }
 
+void WordScrambleWindow::cdRemoveLetter(Fl_Widget* widget, void* data)
+{
+
+    WordScrambleWindow* window = (WordScrambleWindow*)data;
+
+    if(window->previousLetter != nullptr)
+    {
+        window->previousLetter->show();
+
+        window->userWordInput = window->userWordInput.substr(0, window->userWordInput.size()-1);
+
+        window->wordGuessInput->value(window->userWordInput.c_str());
+
+    }
+
+    window->previousLetter = nullptr;
+
+}
+
+void WordScrambleWindow::cbClearLetters(Fl_Widget* widget, void* data)
+{
+
+    WordScrambleWindow* window = (WordScrambleWindow*)data;
+
+    for(size_t i = 0; i < window->buttonBoard.size(); i++)
+    {
+        window->buttonBoard[i]->show();
+    }
+
+    window->wordGuessInput->value("");
+    window->userWordInput = "";
+
+}
+
 void WordScrambleWindow::createButtonBoard(WordScrambleWindow* window)
 {
     int offset = 0;
@@ -281,15 +324,14 @@ void WordScrambleWindow::cbLetterButtonPressed(Fl_Widget* widget, void* data)
     window->addLetterToInput(widget->label());
     Fl_Button* button = (Fl_Button*)widget;
     button->hide();
+    window->previousLetter = button;
 
     window = nullptr;
-    button = nullptr;
 }
 
 void WordScrambleWindow::addLetterToInput(const char* letter)
 {
 
-    cout << letter << endl;
     this->userWordInput += letter;
     this->wordGuessInput->insert(letter, 1);
 

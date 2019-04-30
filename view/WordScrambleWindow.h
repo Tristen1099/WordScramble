@@ -36,17 +36,20 @@ private:
     Fl_Button* resetButton;
     Fl_Button* scrambleButton;
     Fl_Button* enterButton;
+    Fl_Button* removeLetterButton;
+    Fl_Button* clearLettersButton;
     Fl_Box* gameTitle;
     Fl_Box* scoreTitle;
     Fl_Box* currentScore;
     Fl_Box* timeRemainingTitle;
-    Fl_Input* wordGuessInput;
+        Fl_Input* wordGuessInput;
     Fl_Text_Buffer* summaryOutputTextBuffer;
     Fl_Text_Display* summaryOutputTextDisplay;
 
 
     vector<Fl_Button*> buttonBoard;
     vector<string*> buttonLetterBoard;
+    Fl_Button* previousLetter;
 
     int letterCount;
     string userWordInput;
@@ -84,6 +87,8 @@ public:
     static void cbScrambleLetters(Fl_Widget* widget, void* data);
     static void cbEnterWord(Fl_Widget* widget, void* data);
     static void cbLetterButtonPressed(Fl_Widget* widget, void* data);
+    static void cdRemoveLetter(Fl_Widget* widget, void* data);
+    static void cbClearLetters(Fl_Widget* widget, void* data);
     void setSummaryText(const string& outputText);
     void endGame();
 
