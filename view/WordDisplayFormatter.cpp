@@ -1,8 +1,5 @@
 #include "WordDisplayFormatter.h"
 
-#include <iostream>
-using namespace std;
-
 namespace view
 {
 
@@ -47,7 +44,6 @@ const string WordDisplayFormatter::drawWord(const string& word, const set<string
     {
         output = string(word.size(), '#');
     }
-    cout << word << endl;
     return output;
 }
 }
