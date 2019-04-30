@@ -1,21 +1,27 @@
 #ifndef WORDDISPLAYFORMATTER_H
 #define WORDDISPLAYFORMATTER_H
 
-#include <vector>
-#include <string>
 #include <sstream>
 #include <iomanip>
 #include <algorithm>
 using namespace std;
 
+namespace view
+{
+
 class WordDisplayFormatter
 {
-    public:
-        static string format(vector<string>* guessed, vector<string>* allWords);
+private:
+    static const size_t COLUMN_WIDTH = 10;
+
+public:
+    static const string format(const vector<string>* guessed, const vector<string>* allWords);
 
 
-    private:
-        static string drawWord(const string& word, vector<string>* guessed);
+private:
+    static const string drawWord(const string& word, const vector<string>* guessed);
 };
+
+}
 
 #endif // WORDDISPLAYFORMATTER_H
