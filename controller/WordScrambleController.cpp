@@ -15,6 +15,8 @@ WordScrambleController::~WordScrambleController()
 {
     delete this->dictionary;
     delete this->fileReader;
+    delete this->validWords;
+    delete this->guessedWords;
 }
 
 
@@ -26,37 +28,30 @@ void WordScrambleController::readFileToDictionary(const string& filename)
 
 bool WordScrambleController::guessWord(const string& word)
 {
-    return false;
+    bool isAlreadyGuessed = find(this->guessedWords->begin(), this->guessedWords->end(), word) != this->guessedWords->end();
+    bool isValid = find(this->validWords->begin(), this->validWords->end(), word) != this->validWords->end();
+    return (!isAlreadyGuessed && isValid);
 }
 
 void WordScrambleController::makeNewCurrentWordsWith(vector<char> letters)
 {
-
+    this->validWords = this->dictionary->findAllWordsContaining(letters);
 }
 
-vector<string> WordScrambleController::getValidWords()
+vector<string>* WordScrambleController::getValidWords() const
 {
     return this->validWords;
 }
 
-vector<string> WordScrambleController::getGuessedWords()
+vector<string>* WordScrambleController::getGuessedWords() const
 {
     return this->guessedWords;
 }
 
 void WordScrambleController::resetGame()
 {
-
-}
-
-void WordScrambleController::clearValidWords()
-{
-
-}
-
-void WordScrambleController::clearGuessedWords()
-{
-
+    this->validWords->clear();
+    this->guessedWords->clear();
 }
 
 

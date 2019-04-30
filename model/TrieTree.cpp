@@ -21,6 +21,12 @@ TrieTree::~TrieTree()
     delete this->root;
 }
 
+void TrieTree::clear()
+{
+    delete this->root;
+    this->root = new TrieNode();
+}
+
 void TrieTree::insert(const string& key)
 {
     TrieNode *pCrawl = this->root;

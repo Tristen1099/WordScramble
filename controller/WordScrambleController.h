@@ -17,8 +17,8 @@ private:
 
     Dictionary* dictionary;
     DictionaryFileReader* fileReader;
-    vector<string> guessedWords;
-    vector<string> validWords;
+    vector<string>* guessedWords;
+    vector<string>* validWords;
 
 public:
     WordScrambleController();
@@ -28,15 +28,11 @@ public:
     bool guessWord(const string& word);
     void makeNewCurrentWordsWith(vector<char> letters);
 
-    vector<string> getValidWords();
-    vector<string> getGuessedWords();
+    vector<string>* getValidWords() const;
+    vector<string>* getGuessedWords() const;
 
     void resetGame();
 
-
-private:
-    void clearValidWords();
-    void clearGuessedWords();
 
 
 };

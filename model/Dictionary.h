@@ -19,11 +19,9 @@ class Dictionary
 
 private:
     TrieTree wordTree;
-    //vector
 
 public:
     Dictionary(vector<string> words);
-    virtual ~Dictionary();
 
     void setCollection(vector<string> newCollection);
     vector<string>* findAllWordsContaining(vector<char> letters);

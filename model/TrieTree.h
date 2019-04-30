@@ -19,6 +19,7 @@ public:
     TrieTree(TrieNode* root);
     virtual ~TrieTree();
 
+    void clear();
     bool search(const string& key);
     void insert(const string& key);
     void findAllWordsUsing(char* letters, int letterCount, vector<string>* result);

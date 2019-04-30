@@ -14,13 +14,9 @@ Dictionary::Dictionary(vector<string> words)
     }
 }
 
-Dictionary::~Dictionary()
-{
-    //dtor
-}
-
 void Dictionary::setCollection(vector<string> newCollection)
 {
+    this->wordTree.clear();
     for (size_t i = 0; i < newCollection.size(); i++)
     {
         this->wordTree.insert(newCollection.at(i));
@@ -37,22 +33,9 @@ vector<string>* Dictionary::findAllWordsContaining(vector<char> letters)
 
     this->wordTree.findAllWordsUsing(charLetters, letterCount, validWords);
     delete charLetters;
-    sort( validWords->begin(), validWords->end() );
-    validWords->erase( unique( validWords->begin(), validWords->end() ), validWords->end() );
-    /*
-    vector<string> output;
-    for (size_t i = 0; i < this->words.size(); i++)
-    {
-        string currentWord = this->words[i];
+    sort(validWords->begin(), validWords->end());
+    validWords->erase(unique( validWords->begin(), validWords->end() ), validWords->end());
 
-        if (this->validWord(currentWord, letters))
-        {
-            cout << currentWord << endl;
-            output.push_back(currentWord);
-        }
-    }
-    return output;
-    */
     return validWords;
 }
 
