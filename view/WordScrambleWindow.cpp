@@ -399,7 +399,6 @@ void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
             score -= 10;
         }
 
-
         string newScore;
         newScore = to_string(score);
 
