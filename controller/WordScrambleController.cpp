@@ -9,6 +9,8 @@ WordScrambleController::WordScrambleController()
 {
     this->fileReader = new DictionaryFileReader(DICTIONARY_FILE_NAME);
     this->dictionary = this->fileReader->readFileToDictionary();
+    this->guessedWords = new vector<string>();
+    this->validWords = new vector<string>();
 }
 
 WordScrambleController::~WordScrambleController()
@@ -33,8 +35,9 @@ bool WordScrambleController::guessWord(const string& word)
     return (!isAlreadyGuessed && isValid);
 }
 
-void WordScrambleController::makeNewCurrentWordsWith(vector<char> letters)
+void WordScrambleController::setValidWordsWith(vector<char> letters)
 {
+    delete this->validWords;
     this->validWords = this->dictionary->findAllWordsContaining(letters);
 }
 
@@ -46,6 +49,11 @@ vector<string>* WordScrambleController::getValidWords() const
 vector<string>* WordScrambleController::getGuessedWords() const
 {
     return this->guessedWords;
+}
+
+vector<char> WordScrambleController::getRandomLetters(size_t letterCount)
+{
+    return RandomLetterGenerator::makeRandomLetterCollection(letterCount);
 }
 
 void WordScrambleController::resetGame()

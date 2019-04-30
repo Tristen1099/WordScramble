@@ -17,6 +17,8 @@
 					<Add directory="fileio" />
 					<Add directory="model" />
 					<Add directory="utilities" />
+					<Add directory="view" />
+					<Add directory="controller" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -30,6 +32,8 @@
 					<Add directory="fileio" />
 					<Add directory="model" />
 					<Add directory="utilities" />
+					<Add directory="view" />
+					<Add directory="controller" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -39,6 +43,8 @@
 		<Linker>
 			<Add option="`fltk-config --ldstaticflags`" />
 		</Linker>
+		<Unit filename="controller/WordScrambleController.cpp" />
+		<Unit filename="controller/WordScrambleController.h" />
 		<Unit filename="fileio/DictionaryFileReader.cpp" />
 		<Unit filename="fileio/DictionaryFileReader.h" />
 		<Unit filename="main.cpp" />

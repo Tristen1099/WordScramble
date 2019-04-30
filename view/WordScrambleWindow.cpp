@@ -42,7 +42,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->newGameButton = new Fl_Button(8, 70, 90, 30, "New Game");
     this->scrambleButton = new Fl_Button(470, 296, 80, 50, "Scramble");
     this->enterButton = new Fl_Button(505, 248, 60, 30, "Enter");
-    this->resetButton = new Fl_Button(8, 110, 90, 30, "Reset Game");
+    this->resetButton = new Fl_Button(8, 110, 90, 30, "Exit Game");
 
     this->gameTitle = new Fl_Box(270,8, 50,50,"~The Word Scrambler~");
     this->wordGuessInput = new Fl_Input(230, 250, 200, 25, "Enter Guess Here:");
@@ -114,9 +114,6 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->letterRadioGroup->box(FL_SHADOW_BOX);
     this->removeLetterButton->box(FL_RSHADOW_BOX);
     this->clearLettersButton->box(FL_RSHADOW_BOX);
-
-    DictionaryFileReader* reader = new DictionaryFileReader("other/dictionary.txt");
-    this->dictionary = reader->readFileToDictionary();
 
 
     end();
@@ -190,12 +187,12 @@ string* WordScrambleWindow::getScoreString()
     return this->strCurrentScore;
 }
 
-void WordScrambleWindow::setTimeString(string time)
+void WordScrambleWindow::setTimeString(const string& time)
 {
     *this->strSecondsRemaining = time;
 }
 
-void WordScrambleWindow::setScoreString(string score)
+void WordScrambleWindow::setScoreString(const string& score)
 {
     *this->strCurrentScore = score;
 }
@@ -239,8 +236,7 @@ void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
         validLetters.push_back(letter->at(0));
     }
 
-    window->allValidWords = window->dictionary->findAllWordsContaining(validLetters);
-
+    window->controller.setValidWordsWith(validLetters);
 }
 
 void WordScrambleWindow::cbResetGame(Fl_Widget* widget, void* data)
@@ -356,36 +352,24 @@ void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
         return;
     }
 
-    bool valid = false;
-    for(size_t i = 0; i < window->allValidWords->size(); i++)
+    bool valid = window->controller.guessWord(userGuess);
+
+    if(valid)
     {
+        int score;
+        stringstream stream;
 
-        string word;
-        word = window->allValidWords->at(i);
+        stream << window->currentScore->label();
+        stream >> score;
+        score += window->getScoreForWord(userGuess);
 
-        if(userGuess == word)
-        {
-            valid = true;
-            window->allValidWords->erase(window->allValidWords->begin()+i);
+        string newScore;
+        newScore = to_string(score);
 
-            int score;
-            stringstream stream;
-
-            stream << window->currentScore->label();
-            stream >> score;
-            score += window->getScoreForWord(word);
-
-            string newScore;
-            newScore = to_string(score);
-
-            window->setScoreString(newScore);
-            window->updateCurrentScoreLabel();
-
-            break;
-        }
-
+        window->setScoreString(newScore);
+        window->updateCurrentScoreLabel();
     }
-    if(!(valid))
+    else
     {
         int score;
         stringstream stream;
@@ -393,10 +377,13 @@ void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
         stream << window->currentScore->label();
         stream >> score;
 
-        if(!(score <= 0))
+        if(score >= 10)
         {
-
             score -= 10;
+        }
+        else
+        {
+            score = 0;
         }
 
         string newScore;
@@ -417,7 +404,7 @@ void WordScrambleWindow::cbEnterWord(Fl_Widget* widget, void* data)
     window->userWordInput = "";
 }
 
-int WordScrambleWindow::getScoreForWord(string word)
+int WordScrambleWindow::getScoreForWord(const string& word)
 {
     int wordLength;
     wordLength = word.length();
@@ -474,7 +461,7 @@ void WordScrambleWindow::setSummaryText(const string& outputText)
 
 inline void WordScrambleWindow::instantiateButtonBoardInline(size_t buttonCount)
 {
-    vector<char> randomLetters = RandomLetterGenerator::makeRandomLetterCollection(buttonCount);
+    vector<char> randomLetters = this->controller.getRandomLetters(buttonCount);
 
     int offset = 0;
 
@@ -515,6 +502,7 @@ void WordScrambleWindow::endGame()
     this->currentTime->hide();
     this->removeLetterButton->deactivate();
     this->clearLettersButton->deactivate();
+    this->controller.resetGame();
 
 }
 
@@ -589,8 +577,6 @@ WordScrambleWindow::~WordScrambleWindow()
     delete this->letterRadioGroup;
 
     //delete this->letterRadioGroupButton;
-
-    delete this->allValidWords;
 
 
 

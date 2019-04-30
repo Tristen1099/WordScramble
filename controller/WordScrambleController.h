@@ -2,6 +2,7 @@
 #define WORDSCRAMBLECONTROLLER_H
 
 #include "../model/Dictionary.h"
+#include "../model/RandomLetterGenerator.h"
 using namespace model;
 
 #include "../fileio/DictionaryFileReader.h"
@@ -26,10 +27,11 @@ public:
 
     void readFileToDictionary(const string& filename);
     bool guessWord(const string& word);
-    void makeNewCurrentWordsWith(vector<char> letters);
+    void setValidWordsWith(vector<char> letters);
 
     vector<string>* getValidWords() const;
     vector<string>* getGuessedWords() const;
+    vector<char> getRandomLetters(size_t letterCount);
 
     void resetGame();
 

@@ -19,13 +19,8 @@
 #include <string>
 using namespace std;
 
-
-#include "../model/RandomLetterGenerator.h"
-#include "../model/Dictionary.h"
-using namespace model;
-
-#include "../fileio/DictionaryFileReader.h"
-using namespace fileio;
+#include "../controller/WordScrambleController.h"
+using namespace controller;
 
 namespace view
 {
@@ -38,6 +33,9 @@ private:
 
     const static size_t TIME_RADIO_GROUP_SIZE = 3;
     const static size_t LETTER_RADIO_GROUP_SIZE = 3;
+
+    WordScrambleController controller;
+
 
     Fl_Button* newGameButton;
     Fl_Button* resetButton;
@@ -77,9 +75,6 @@ private:
     vector<string> timeGroup = {"1 Minute", "2 Minutes", "3 Minutes"};
     vector<string> letterGroup = {"5 Letters", "6 Letters", "7 Letters"};
 
-    vector<string>* allValidWords;
-    Dictionary* dictionary;
-
 
 public:
 
@@ -88,8 +83,8 @@ public:
 
     string* getTimeString();
     string* getScoreString();
-    void setTimeString(string time);
-    void setScoreString(string score);
+    void setTimeString(const string& time);
+    void setScoreString(const string& score);
     void decreaseSecondsRemaining();
     void updateCurrentTimeLabel();
     void updateCurrentScoreLabel();
@@ -117,7 +112,7 @@ private:
     void createAndDisplayLetterRadioButtons();
 
     void setValuesForLetterAndTimeSpecs();
-    int getScoreForWord(string word);
+    int getScoreForWord(const string& word);
 
 };
 
