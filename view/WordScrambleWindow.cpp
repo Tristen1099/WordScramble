@@ -60,6 +60,10 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->summaryOutputTextBuffer = new Fl_Text_Buffer();
     this->summaryOutputTextDisplay = new Fl_Text_Display(105, 70, 390, 150);
 
+    this->highScoresTitle = new Fl_Box(25,300, 50,50,"~Top~ \n ~High~ \n ~Scores~");
+    this->highScoreOutputTextBuffer = new Fl_Text_Buffer();
+    this->highScoreOutputTextDisplay = new Fl_Text_Display(105, 285, 350, 80);
+
     this->newGameButton->callback(cbStartNewGame, this);
     this->scrambleButton->callback(cbScrambleLetters, this);
     this->enterButton->callback(cbEnterWord, this);
@@ -82,11 +86,15 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->enterButton->color(buttonColor);
     this->gameTitle->labelcolor(fontColor);
     this->scoreTitle->labelcolor(fontColor);
+    this->highScoresTitle->labelcolor(fontColor);
     this->timeRemainingTitle->labelcolor(fontColor);
     this->summaryOutputTextDisplay->color(backgroundColor);
+    this->highScoreOutputTextDisplay->color(backgroundColor);
 
     this->summaryOutputTextDisplay->textfont(FL_COURIER);
     this->summaryOutputTextDisplay->buffer(summaryOutputTextBuffer);
+    this->highScoreOutputTextDisplay->textfont(FL_COURIER);
+    this->highScoreOutputTextDisplay->buffer(highScoreOutputTextBuffer);
 
     this->buttonLetterBoard = vector<string*>();
     this->buttonBoard = vector<Fl_Button*>();
@@ -105,6 +113,7 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->gameTitle->labelfont(fontStyle);
     this->scoreTitle->labelfont(fontStyle);
     this->gameTitle->labelsize(fontSize);
+    this->highScoresTitle->labelsize(scoreFontSize);
     this->scoreTitle->labelsize(scoreFontSize);
     this->newGameButton->box(FL_RSHADOW_BOX);
     this->resetButton->box(FL_RSHADOW_BOX);
@@ -228,6 +237,8 @@ void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
     window->resetButton->show();
     window->removeLetterButton->activate();
     window->clearLettersButton->activate();
+    window->highScoreOutputTextDisplay->hide();
+    window->highScoresTitle->hide();
     window->end();
 
     std::vector<char> validLetters;
@@ -472,6 +483,11 @@ void WordScrambleWindow::setSummaryText(const string& outputText)
     this->summaryOutputTextBuffer->text(outputText.c_str());
 }
 
+void WordScrambleWindow::setHighScoreText(const string& outputText)
+{
+    this->highScoreOutputTextBuffer->text(outputText.c_str());
+}
+
 inline void WordScrambleWindow::instantiateButtonBoardInline(size_t buttonCount)
 {
     vector<char> randomLetters = RandomLetterGenerator::makeRandomLetterCollection(buttonCount);
@@ -515,6 +531,8 @@ void WordScrambleWindow::endGame()
     this->currentTime->hide();
     this->removeLetterButton->deactivate();
     this->clearLettersButton->deactivate();
+    this->highScoreOutputTextDisplay->show();
+    this->highScoresTitle->show();
 
 }
 

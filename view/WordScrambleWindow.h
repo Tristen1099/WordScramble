@@ -49,9 +49,12 @@ private:
     Fl_Box* scoreTitle;
     Fl_Box* currentScore;
     Fl_Box* timeRemainingTitle;
+    Fl_Box* highScoresTitle;
     Fl_Input* wordGuessInput;
     Fl_Text_Buffer* summaryOutputTextBuffer;
     Fl_Text_Display* summaryOutputTextDisplay;
+    Fl_Text_Buffer* highScoreOutputTextBuffer;
+    Fl_Text_Display* highScoreOutputTextDisplay;
 
 
     vector<Fl_Button*> buttonBoard;
@@ -104,6 +107,7 @@ public:
     static void cdRemoveLetter(Fl_Widget* widget, void* data);
     static void cbClearLetters(Fl_Widget* widget, void* data);
     void setSummaryText(const string& outputText);
+    void setHighScoreText(const string& outputText);
     void endGame();
 
 private:

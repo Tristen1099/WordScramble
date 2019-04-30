@@ -39,6 +39,8 @@
 		<Linker>
 			<Add option="`fltk-config --ldstaticflags`" />
 		</Linker>
+		<Unit filename="controller/WordScrambleController.cpp" />
+		<Unit filename="controller/WordScrambleController.h" />
 		<Unit filename="fileio/DictionaryFileReader.cpp" />
 		<Unit filename="fileio/DictionaryFileReader.h" />
 		<Unit filename="main.cpp" />
