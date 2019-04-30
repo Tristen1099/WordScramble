@@ -378,3 +378,6 @@
 1556624801 /home/csuser/GroupCWordScramble/model/HighScore.h
 	<string>
 
+1556624801 source:/home/csuser/GroupCWordScramble/model/HighScore.cpp
+	"HighScore.h"
+
