@@ -1,16 +1,44 @@
 #ifndef WORDSCRAMBLECONTROLLER_H
 #define WORDSCRAMBLECONTROLLER_H
 
+#include "../model/Dictionary.h"
+using namespace model;
+
+#include "../fileio/DictionaryFileReader.h"
+using namespace fileio;
+
+namespace controller
+{
 
 class WordScrambleController
 {
-    public:
-        WordScrambleController();
-        virtual ~WordScrambleController();
+private:
+    static const string& DICTIONARY_FILE_NAME;
 
-    protected:
+    Dictionary* dictionary;
+    DictionaryFileReader* fileReader;
+    vector<string> guessedWords;
+    vector<string> validWords;
 
-    private:
+public:
+    WordScrambleController();
+    virtual ~WordScrambleController();
+
+    void readFileToDictionary(const string& filename);
+    bool guessWord(const string& word);
+    void makeNewCurrentWordsWith(vector<char> letters);
+
+    vector<string> getValidWords();
+    vector<string> getGuessedWords();
+
+    void resetGame();
+
+
+private:
+    void clearValidWords();
+    void clearGuessedWords();
+
 };
+}
 
 #endif // WORDSCRAMBLECONTROLLER_H

@@ -36,11 +36,8 @@
 	<ctime>
 	<iostream>
 
-1556609568 source:/home/csuser/GroupCWordScramble/main.cpp
+1556609954 source:/home/csuser/GroupCWordScramble/main.cpp
 	"view/WordScrambleWindow.h"
-	"../view/WordDisplayFormatter.h"
-	<vector>
-	<iostream>
 
 1556605718 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
@@ -252,17 +249,17 @@
 
 1556388045 /home/csuser/GroupCWordScramble/model/TernarySearchTree.h
 
-1556514324 /home/csuser/GroupCWordScramble/model/TrieNode.h
+1556610337 /home/csuser/GroupCWordScramble/model/TrieNode.h
 	"../utilities/Utils.h"
 
-1556498402 source:/home/csuser/GroupCWordScramble/model/TrieNode.cpp
+1556610346 source:/home/csuser/GroupCWordScramble/model/TrieNode.cpp
 	"TrieNode.h"
 
-1556603388 source:/home/csuser/GroupCWordScramble/model/TrieTree.cpp
+1556610386 source:/home/csuser/GroupCWordScramble/model/TrieTree.cpp
 	"TrieTree.h"
 	<iostream>
 
-1556599096 /home/csuser/GroupCWordScramble/model/TrieTree.h
+1556610370 /home/csuser/GroupCWordScramble/model/TrieTree.h
 	"../model/TrieNode.h"
 	<bits/stdc++.h>
 

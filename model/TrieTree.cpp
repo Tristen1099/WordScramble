@@ -3,6 +3,9 @@
 #include <iostream>
 using namespace std;
 
+namespace model
+{
+
 TrieTree::TrieTree()
 {
     this->root = new TrieNode();
@@ -179,6 +182,8 @@ char* TrieTree::createWithoutFirstLetter(char* letters, int letterCount)
     }
 
     return newLetters;
+}
+
 }
 
 

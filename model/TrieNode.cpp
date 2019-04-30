@@ -1,5 +1,8 @@
 #include "TrieNode.h"
 
+namespace model
+{
+
 TrieNode::TrieNode()
 {
     this->isLeaf = false;
@@ -36,4 +39,6 @@ void TrieNode::createChildAt(int index)
 void TrieNode::setIsEndOfWord(bool value)
 {
     this->isLeaf = value;
+}
+
 }

@@ -2,10 +2,13 @@
 #define TRIETREE_H
 
 #include "../model/TrieNode.h"
+using namespace model;
 
 #include <bits/stdc++.h>
 using namespace std;
 
+namespace model
+{
 class TrieTree
 {
 private:
@@ -26,5 +29,6 @@ private:
     char* createShiftedLetters(char* letters, int letterCount);
     char* createWithoutFirstLetter(char* letters, int letterCount);
 };
+}
 
 #endif // TRIETREE_H

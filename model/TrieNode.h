@@ -3,6 +3,9 @@
 
 #include "../utilities/Utils.h"
 
+namespace model
+{
+
 class TrieNode
 {
 private:
@@ -20,4 +23,5 @@ public:
 
 };
 
+}
 #endif // TRIENODE_H
