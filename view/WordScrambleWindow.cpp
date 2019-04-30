@@ -149,6 +149,8 @@ void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
     window->clearLettersButton->activate();
     window->highScoreOutputTextDisplay->hide();
     window->highScoresTitle->hide();
+    window->setScoreString("0");
+    window->updateCurrentScoreLabel();
 
     std::vector<char> validLetters;
     for (int i=0; i<window->buttonLetterBoard.size(); i++)

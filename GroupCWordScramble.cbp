@@ -47,6 +47,10 @@
 		<Unit filename="controller/WordScrambleController.h" />
 		<Unit filename="fileio/DictionaryFileReader.cpp" />
 		<Unit filename="fileio/DictionaryFileReader.h" />
+		<Unit filename="fileio/HighScoreFileReader.cpp" />
+		<Unit filename="fileio/HighScoreFileReader.h" />
+		<Unit filename="fileio/HighScoreFileWriter.cpp" />
+		<Unit filename="fileio/HighScoreFileWriter.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="model/Dictionary.cpp" />
 		<Unit filename="model/Dictionary.h" />
