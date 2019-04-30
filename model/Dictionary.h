@@ -8,6 +8,8 @@
 #include <algorithm>
 using namespace std;
 
+#include "../model/TrieTree.h"
+
 
 namespace model
 {
@@ -16,16 +18,15 @@ class Dictionary
 {
 
 private:
-    vector<string> words;
+    //vector<string> words;
+    TrieTree wordTree;
 
 public:
     Dictionary(vector<string> words);
     virtual ~Dictionary();
 
     void setCollection(vector<string> newCollection);
-    vector<string> getCollection();
-
-    vector<string> findAllWordsContaining(vector<char> letters);
+    vector<string>* findAllWordsContaining(vector<char> letters);
 
 private:
     bool wordContainsEachLetter(const string& word, vector<char> letters);

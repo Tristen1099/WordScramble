@@ -14,8 +14,6 @@ bool DictionaryFileReader::char_isspace(char c)
     return std::isspace(static_cast<unsigned char>(c));
 }
 
-
-
 Dictionary* DictionaryFileReader::readFileToDictionary()
 {
     string line;
@@ -23,7 +21,11 @@ Dictionary* DictionaryFileReader::readFileToDictionary()
     vector<string> words;
     while (getline(infile, line))
     {
-        words.push_back(removeWhitespaces(line));
+        string cleanLine = removeWhitespaces(line);
+        if (cleanLine.size() >= MIN_WORD_LENGTH)
+        {
+            words.push_back(cleanLine);
+        }
     }
 
     return new Dictionary(words);

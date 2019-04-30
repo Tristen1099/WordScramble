@@ -4,30 +4,6 @@ namespace view
 {
 
 
-void Timer_CB(void *data)
-{
-    WordScrambleWindow* window = (WordScrambleWindow*)data;
-    window->decreaseSecondsRemaining();
-    window->begin();
-    if(window->getSecondsRemaining() > 0)
-    {
-        window->setTimeString(to_string(window->getSecondsRemaining()));
-        window->updateCurrentTimeLabel();
-        Fl::repeat_timeout(1, Timer_CB, data);
-    }
-    else
-    {
-        window->setTimeString("Times Up!");
-        window->updateCurrentTimeLabel();
-        Fl::remove_timeout(Timer_CB, data);
-        window->endGame();
-
-
-    }
-    window->end();
-
-}
-
 WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
     begin();
@@ -91,6 +67,30 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
 
     end();
 
+
+}
+
+void Timer_CB(void *data)
+{
+    WordScrambleWindow* window = (WordScrambleWindow*)data;
+    window->decreaseSecondsRemaining();
+    window->begin();
+    if(window->getSecondsRemaining() > 0)
+    {
+        window->setTimeString(to_string(window->getSecondsRemaining()));
+        window->updateCurrentTimeLabel();
+        Fl::repeat_timeout(1, Timer_CB, data);
+    }
+    else
+    {
+        window->setTimeString("Times Up!");
+        window->updateCurrentTimeLabel();
+        Fl::remove_timeout(Timer_CB, data);
+        window->endGame();
+
+
+    }
+    window->end();
 
 }
 
@@ -260,6 +260,8 @@ inline void WordScrambleWindow::instantiateButtonBoardInline(size_t buttonCount)
 
 void WordScrambleWindow::endGame()
 {
+    cout << "Proof that he does have a heart" << endl;
+
     this->scrambleButton->deactivate();
     this->enterButton->deactivate();
     for (size_t i = 0; i < this->buttonBoard.size(); i++)

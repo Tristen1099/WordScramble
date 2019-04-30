@@ -20,6 +20,7 @@ class DictionaryFileReader
 
 private:
     string filename;
+    const static int MIN_WORD_LENGTH = 3;
 
 public:
     DictionaryFileReader(const string& filename);

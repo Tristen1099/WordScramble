@@ -5,7 +5,10 @@ namespace model
 
 Dictionary::Dictionary(vector<string> words)
 {
-    this->words = words;
+    for (size_t i = 0; i < words.size(); i++)
+    {
+        this->wordTree.insert(words.at(i));
+    }
 }
 
 Dictionary::~Dictionary()
@@ -15,16 +18,24 @@ Dictionary::~Dictionary()
 
 void Dictionary::setCollection(vector<string> newCollection)
 {
-    this->words = newCollection;
+    for (size_t i = 0; i < newCollection.size(); i++)
+    {
+        this->wordTree.insert(newCollection.at(i));
+    }
 }
 
-vector<string> Dictionary::getCollection()
+vector<string>* Dictionary::findAllWordsContaining(vector<char> letters)
 {
-    return this->words;
-}
+    vector<string>* validWords = new vector<string>();
+    int letterCount = letters.size();
+    char* charLetters = new char[letterCount];
+    copy(letters.begin(), letters.end(), charLetters);
+    //char* charLetters = "test";
 
-vector<string> Dictionary::findAllWordsContaining(vector<char> letters)
-{
+    this->wordTree.findAllWordsUsing(charLetters, letterCount, validWords);
+    sort( validWords->begin(), validWords->end() );
+    validWords->erase( unique( validWords->begin(), validWords->end() ), validWords->end() );
+    /*
     vector<string> output;
     for (size_t i = 0; i < this->words.size(); i++)
     {
@@ -37,10 +48,13 @@ vector<string> Dictionary::findAllWordsContaining(vector<char> letters)
         }
     }
     return output;
+    */
+    return validWords;
 }
 
 bool Dictionary::validWord(const string& word, vector<char> letters)
 {
+    /*
     bool valid = true;
     for (size_t i = 0; i < word.size(); i++)
     {
@@ -66,6 +80,7 @@ bool Dictionary::validWord(const string& word, vector<char> letters)
 
     }
     return valid;
+    */
 
 }
 

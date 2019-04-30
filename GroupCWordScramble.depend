@@ -32,10 +32,15 @@
 	<ctime>
 	<iostream>
 
-1556498530 source:/home/csuser/GroupCWordScramble/main.cpp
+1556600112 source:/home/csuser/GroupCWordScramble/main.cpp
 	"view/WordScrambleWindow.h"
+	"../model/TrieTree.h"
+	"../model/Dictionary.h"
+	"../fileio/DictionaryFileReader.h"
+	<string>
+	<iostream>
 
-1556511385 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
+1556511858 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
@@ -56,7 +61,7 @@
 	<ctime>
 	<iostream>
 
-1556510969 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
+1556511970 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
 1555641991 source:/home/csuser/GroupCWordScramble/utilities/GetRandomLetter.cpp
@@ -73,10 +78,10 @@
 
 1556420181 D
 
-1556343874 source:/home/csuser/GroupCWordScramble/fileio/DictionaryFileReader.cpp
+1556600093 source:/home/csuser/GroupCWordScramble/fileio/DictionaryFileReader.cpp
 	"DictionaryFileReader.h"
 
-1555790830 /home/csuser/GroupCWordScramble/fileio/DictionaryFileReader.h
+1556600071 /home/csuser/GroupCWordScramble/fileio/DictionaryFileReader.h
 	"../model/Dictionary.h"
 	"../utilities/Utils.h"
 	<fstream>
@@ -103,14 +108,15 @@
 1556343874 source:/home/csuser/GroupCWordScramble/utilities/Utils.cpp
 	"Utils.h"
 
-1556387984 source:/home/csuser/GroupCWordScramble/model/Dictionary.cpp
+1556600500 source:/home/csuser/GroupCWordScramble/model/Dictionary.cpp
 	"Dictionary.h"
 
-1555783330 /home/csuser/GroupCWordScramble/model/Dictionary.h
+1556598461 /home/csuser/GroupCWordScramble/model/Dictionary.h
 	<vector>
 	<string>
 	<iostream>
 	<algorithm>
+	"../model/TrieTree.h"
 
 1555783330 >
 
@@ -239,16 +245,17 @@
 
 1556388045 /home/csuser/GroupCWordScramble/model/TernarySearchTree.h
 
-1556499906 /home/csuser/GroupCWordScramble/model/TrieNode.h
+1556514324 /home/csuser/GroupCWordScramble/model/TrieNode.h
 	"../utilities/Utils.h"
 
 1556498402 source:/home/csuser/GroupCWordScramble/model/TrieNode.cpp
 	"TrieNode.h"
 
-1556498391 source:/home/csuser/GroupCWordScramble/model/TrieTree.cpp
+1556600443 source:/home/csuser/GroupCWordScramble/model/TrieTree.cpp
 	"TrieTree.h"
+	<iostream>
 
-1556496475 /home/csuser/GroupCWordScramble/model/TrieTree.h
+1556599096 /home/csuser/GroupCWordScramble/model/TrieTree.h
 	"../model/TrieNode.h"
 	<bits/stdc++.h>
 

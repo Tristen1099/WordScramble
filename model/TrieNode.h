@@ -17,7 +17,6 @@ public:
     TrieNode* childAt(int index);
     void createChildAt(int index);
     void setIsEndOfWord(bool value);
-    vector<string> findAll(vector<char> letters);
 
 };
 
