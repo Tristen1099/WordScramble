@@ -39,7 +39,7 @@
 1556600568 source:/home/csuser/GroupCWordScramble/main.cpp
 	"view/WordScrambleWindow.h"
 
-1556602163 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
+1556605718 /home/csuser/GroupCWordScramble/view/WordScrambleWindow.h
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
@@ -64,7 +64,7 @@
 	<ctime>
 	<iostream>
 
-1556602681 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
+1556605738 source:/home/csuser/GroupCWordScramble/view/WordScrambleWindow.cpp
 	"WordScrambleWindow.h"
 
 1555641991 source:/home/csuser/GroupCWordScramble/utilities/GetRandomLetter.cpp
@@ -111,11 +111,11 @@
 1556343874 source:/home/csuser/GroupCWordScramble/utilities/Utils.cpp
 	"Utils.h"
 
-1556602695 source:/home/csuser/GroupCWordScramble/model/Dictionary.cpp
+1556603593 source:/home/csuser/GroupCWordScramble/model/Dictionary.cpp
 	"Dictionary.h"
 	<iostream>
 
-1556602415 /home/csuser/GroupCWordScramble/model/Dictionary.h
+1556604047 /home/csuser/GroupCWordScramble/model/Dictionary.h
 	<vector>
 	<string>
 	<iostream>
@@ -255,7 +255,7 @@
 1556498402 source:/home/csuser/GroupCWordScramble/model/TrieNode.cpp
 	"TrieNode.h"
 
-1556603284 source:/home/csuser/GroupCWordScramble/model/TrieTree.cpp
+1556603388 source:/home/csuser/GroupCWordScramble/model/TrieTree.cpp
 	"TrieTree.h"
 	<iostream>
 

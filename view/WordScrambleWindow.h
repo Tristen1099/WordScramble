@@ -36,6 +36,9 @@ class WordScrambleWindow : public Fl_Window
 
 private:
 
+    const static size_t TIME_RADIO_GROUP_SIZE = 3;
+    const static size_t LETTER_RADIO_GROUP_SIZE = 3;
+
     Fl_Button* newGameButton;
     Fl_Button* resetButton;
     Fl_Button* scrambleButton;
@@ -62,13 +65,13 @@ private:
     int secondsRemaining;
     string* strSecondsRemaining;
 
-    Fl_Output* timeOutputLabel;
+    ///Fl_Output* timeOutputLabel;
     Fl_Group* timeRadioGroup;
-    Fl_Round_Button* timeRadioGroupButton[3];
+    Fl_Round_Button* timeRadioGroupButton[TIME_RADIO_GROUP_SIZE];
 
-    Fl_Output* letterOutputLabel;
+    ///Fl_Output* letterOutputLabel;
     Fl_Group* letterRadioGroup;
-    Fl_Round_Button* letterRadioGroupButton[3];
+    Fl_Round_Button* letterRadioGroupButton[LETTER_RADIO_GROUP_SIZE];
 
     vector<string> timeGroup = {"1 Minute", "2 Minutes", "3 Minutes"};
     vector<string> letterGroup = {"5 Letters", "6 Letters", "7 Letters"};

@@ -133,7 +133,7 @@ void WordScrambleWindow::createAndDisplayTimeRadioButtons()
 
     this->timeRadioGroup->begin();
 
-    for (int j = 0; j<3; j++)
+    for (int j = 0; j < TIME_RADIO_GROUP_SIZE; j++)
     {
         string label = this->timeGroup[j];
         this->timeRadioGroupButton[j] = new Fl_Round_Button(X_RADIO_GROUP, Y_RADIO_GROUP + 3 + j*20, 12, 12, label.c_str());
@@ -469,27 +469,45 @@ WordScrambleWindow::~WordScrambleWindow()
 {
     delete this->newGameButton;
     delete this->resetButton;
+    delete this->scrambleButton;
+    delete this->enterButton;
+    delete this->removeLetterButton;
+    delete this->clearLettersButton;
     delete this->gameTitle;
+    delete this->scoreTitle;
+    delete this->currentScore;
+    delete this->timeRemainingTitle;
+    delete this->wordGuessInput;
     this->summaryOutputTextDisplay->buffer(0);
     delete this->summaryOutputTextBuffer;
     delete this->summaryOutputTextDisplay;
-    delete this->scrambleButton;
-    delete this->enterButton;
-    delete this->scoreTitle;
-    delete this->currentScore;
-    delete this->strSecondsRemaining;
-    delete this->wordGuessInput;
-    delete this->clearLettersButton;
-    delete this->removeLetterButton;
+
+
+    for (size_t i = 0; i < this->buttonBoard.size(); i++)
+    {
+        delete this->buttonBoard[i];
+    }
 
     for (size_t i = 0; i < this->buttonLetterBoard.size(); i++)
     {
         delete this->buttonLetterBoard[i];
     }
-    for (size_t i = 0; i < this->buttonBoard.size(); i++)
-    {
-        delete this->buttonBoard[i];
-    }
+
+    delete this->strSecondsRemaining;
+    ///delete this->timeOutputLabel;
+    delete this->timeRadioGroup;
+
+    //delete this->timeRadioGroupButton;
+
+    ///delete this->letterOutputLabel;
+    delete this->letterRadioGroup;
+
+    //delete this->letterRadioGroupButton;
+
+    delete this->allValidWords;
+
+
+
 }
 
 

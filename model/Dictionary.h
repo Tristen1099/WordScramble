@@ -18,8 +18,8 @@ class Dictionary
 {
 
 private:
-    //vector<string> words;
     TrieTree wordTree;
+    //vector
 
 public:
     Dictionary(vector<string> words);
