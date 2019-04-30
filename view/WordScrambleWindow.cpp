@@ -591,9 +591,17 @@ void WordScrambleWindow::setValuesForLetterAndTimeSpecs()
     }
 
 }
+struct comparer
+{
+    inline bool operator()(HighScore first,HighScore second)
+    {
+        return first.getTimeLimit() < second.getTimeLimit() || (first.getTimeLimit()==second.getTimeLimit() && first.getHighScore() > second.getHighScore());
+    }
+};
 
 void WordScrambleWindow::updateHighScoreDisplay()
 {
+    sort(this->highScores.begin(),this->highScores.end(),comparer());
 
     string output = "";
 

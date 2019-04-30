@@ -54,6 +54,8 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="model/Dictionary.cpp" />
 		<Unit filename="model/Dictionary.h" />
+		<Unit filename="model/HighScore.cpp" />
+		<Unit filename="model/HighScore.h" />
 		<Unit filename="model/RandomLetterGenerator.cpp" />
 		<Unit filename="model/RandomLetterGenerator.h" />
 		<Unit filename="model/TrieNode.cpp" />
