@@ -67,6 +67,12 @@
 		<Unit filename="other/test.txt">
 			<Option target="Debug" />
 		</Unit>
+		<Unit filename="sounds/wow0.mp3" />
+		<Unit filename="sounds/wow1.mp3" />
+		<Unit filename="sounds/wow2.mp3" />
+		<Unit filename="sounds/wow3.mp3" />
+		<Unit filename="sounds/wow4.mp3" />
+		<Unit filename="sounds/wow5.mp3" />
 		<Unit filename="utilities/Utils.cpp" />
 		<Unit filename="utilities/Utils.h" />
 		<Unit filename="view/WordDisplayFormatter.cpp" />
