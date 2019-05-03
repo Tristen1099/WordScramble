@@ -41,13 +41,13 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     begin();
     this->newGameButton = new Fl_Button(8, 70, 90, 30, "New Game");
     this->scrambleButton = new Fl_Button(470, 296, 80, 50, "Scramble");
-    this->enterButton = new Fl_Button(505, 248, 60, 30, "Enter");
+    this->enterButton = new Fl_Button(480, 248, 60, 30, "Enter");
     this->resetButton = new Fl_Button(8, 110, 90, 30, "Exit Game");
 
     this->gameTitle = new Fl_Box(270,8, 50,50,"~The Word Scrambler~");
-    this->wordGuessInput = new Fl_Input(230, 250, 200, 25, "Enter Guess Here:");
-    this->removeLetterButton = new Fl_Button(435, 248, 30, 30, "<-");
-    this->clearLettersButton = new Fl_Button(470, 248, 30, 30, "X");
+    this->wordGuessInput = new Fl_Input(195, 250, 200, 25, "Enter Guess Here:");
+    this->removeLetterButton = new Fl_Button(410, 248, 30, 30, "<-");
+    this->clearLettersButton = new Fl_Button(445, 248, 30, 30, "X");
 
     this->scoreTitle = new Fl_Box(522,170, 50,50,"~Score~");
     this->strCurrentScore = new string("0");
@@ -60,9 +60,9 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->summaryOutputTextBuffer = new Fl_Text_Buffer();
     this->summaryOutputTextDisplay = new Fl_Text_Display(105, 70, 390, 150);
 
-    this->highScoresTitle = new Fl_Box(25,300, 50,50,"~Top~ \n ~High~ \n ~Scores~");
+    this->highScoresTitle = new Fl_Box(25,270, 50,50,"~Top~ \n ~High~ \n ~Scores~");
     this->highScoreOutputTextBuffer = new Fl_Text_Buffer();
-    this->highScoreOutputTextDisplay = new Fl_Text_Display(105, 285, 350, 80);
+    this->highScoreOutputTextDisplay = new Fl_Text_Display(105, 230, 390, 135);
 
     this->newGameButton->callback(cbStartNewGame, this);
     this->scrambleButton->callback(cbScrambleLetters, this);
@@ -100,10 +100,11 @@ WordScrambleWindow::WordScrambleWindow(int width, int height, const char* title)
     this->buttonBoard = vector<Fl_Button*>();
 
     this->wordGuessInput->deactivate();
-    this->scrambleButton->deactivate();
-    this->enterButton->deactivate();
-    this->removeLetterButton->deactivate();
-    this->clearLettersButton->deactivate();
+    this->wordGuessInput->hide();
+    this->scrambleButton->hide();
+    this->enterButton->hide();
+    this->removeLetterButton->hide();
+    this->clearLettersButton->hide();
     this->currentTime->hide();
 
     this->createAndDisplayLetterRadioButtons();
@@ -150,15 +151,16 @@ void WordScrambleWindow::cbStartNewGame(Fl_Widget* widget, void* data)
     window->wordGuessInput->value("");
     window->setValuesForLetterAndTimeSpecs();
     Fl::add_timeout(0, Timer_CB, window);
-    window->scrambleButton->activate();
-    window->enterButton->activate();
+    window->scrambleButton->show();
+    window->enterButton->show();
     window->letterRadioGroup->hide();
     window->timeRadioGroup->hide();
     window->currentTime->show();
     window->instantiateButtonBoardInline(window->letterCount);
     window->resetButton->show();
-    window->removeLetterButton->activate();
-    window->clearLettersButton->activate();
+    window->removeLetterButton->show();
+    window->clearLettersButton->show();
+    window->wordGuessInput->show();
     window->highScoreOutputTextDisplay->hide();
     window->highScoresTitle->hide();
     window->setScoreString("0");
@@ -539,8 +541,6 @@ void WordScrambleWindow::endGame()
 {
     cout << "Proof that he does have a heart" << endl;
 
-    this->scrambleButton->deactivate();
-    this->enterButton->deactivate();
     for (size_t i = 0; i < this->buttonBoard.size(); i++)
     {
         this->buttonBoard[i]->hide();
@@ -550,8 +550,11 @@ void WordScrambleWindow::endGame()
     this->timeRadioGroup->show();
     this->resetButton->hide();
     this->currentTime->hide();
-    this->removeLetterButton->deactivate();
-    this->clearLettersButton->deactivate();
+    this->removeLetterButton->hide();
+    this->clearLettersButton->hide();
+    this->enterButton->hide();
+    this->wordGuessInput->hide();
+    this->scrambleButton->hide();
     this->controller.resetGame();
     this->highScoreOutputTextDisplay->show();
     this->highScoresTitle->show();
@@ -609,7 +612,7 @@ void WordScrambleWindow::updateHighScoreDisplay()
     {
         stringstream sstream;
         HighScore currentScore = this->highScores[i];
-        sstream << setw(12) << left << currentScore.getHighScore() << setw(15) << currentScore.getDate() << setw(12) << currentScore.getTimeLimit();
+        sstream << setw(15) << left << currentScore.getHighScore() << setw(15) << left << currentScore.getDate() << setw(15) << left << currentScore.getTimeLimit();
         output += sstream.str() + "\n";
     }
 
@@ -624,6 +627,11 @@ void WordScrambleWindow::saveHighScores()
     stringstream stream;
     stream << this->currentScore->label();
     stream >> score;
+
+    if(score == 0)
+    {
+        return;
+    }
 
     string timeLimit;
     if(this->timeRadioGroupButton[0]->value() == 1)
@@ -706,20 +714,10 @@ WordScrambleWindow::~WordScrambleWindow()
     }
 
     delete this->strSecondsRemaining;
-    ///delete this->timeOutputLabel;
     delete this->timeRadioGroup;
 
-    //delete this->timeRadioGroupButton;
-
-    ///delete this->letterOutputLabel;
     delete this->letterRadioGroup;
 
-    //delete this->letterRadioGroupButton;
-
-
-
 }
-
-
 
 }

@@ -77,11 +77,9 @@ private:
     string* strSecondsRemaining;
     string* strCurrentScore;
 
-    ///Fl_Output* timeOutputLabel;
     Fl_Group* timeRadioGroup;
     Fl_Round_Button* timeRadioGroupButton[TIME_RADIO_GROUP_SIZE];
 
-    ///Fl_Output* letterOutputLabel;
     Fl_Group* letterRadioGroup;
     Fl_Round_Button* letterRadioGroupButton[LETTER_RADIO_GROUP_SIZE];
 
